@@ -12,8 +12,22 @@ export const styles = (theme: Theme) => ({
     display: 'flex',
     alignItems: 'center',
     alignContent: 'center',
-    columnGap: theme.spacing(2),
+    columnGap: theme.spacing(10),
   },
+  navbar: {
+    display: 'flex',
+    marginTop: '26px',
+    alignItems: 'center',
+    alignContent: 'center',
+    columnGap: theme.spacing(10),
+  },
+  // connection: {
+  //   display: 'flex',
+  //   position: 'absolute',
+  //   columnGap: theme.spacing(10),
+
+  //   // paddingRight: '20px',
+  // },
   hasPortfolio: {
     backgroundColor: theme.palette.background.header,
   },
@@ -21,17 +35,26 @@ export const styles = (theme: Theme) => ({
     backgroundColor: theme.palette.background.alternativeFooterHeader,
   },
   container: {
-    paddingTop: '12px',
+    height: '140px',
+    paddingTop: '16px',
     paddingBottom: '12px',
   },
+  header: {
+    backgroundColor: theme.palette.background.header,
+  },
   content: {
+    paddingTop: '24px',
     justifyContent: 'space-between',
   },
   beefy: {
     display: 'block',
+    marginLeft: '20px',
     '& img': {
-      height: '40px',
+      // height: '40px',
       display: 'block',
     },
   },
+  // navbar: {
+  //   paddingTop: '10px',
+  // }
 });

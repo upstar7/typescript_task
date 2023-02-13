@@ -1,25 +1,37 @@
-import { Theme } from '@material-ui/core';
-
-export const styles = (theme: Theme) => ({
+export const styles = theme => ({
   userStats: {
-    display: 'flex',
+    // display: 'flex',
   },
   stat: {
-    paddingTop: 0,
+    paddingTop: '10px',
     paddingBottom: 0,
-    marginRight: theme.spacing(4),
     [theme.breakpoints.down('sm')]: {
       margin: '8px 24px 8px 0px',
     },
   },
-  value: {
-    ...theme.typography['h2'],
-    color: theme.palette.text.primary,
+  depositValue: {
+    ...theme.typography['h3'],
+    paddingLeft: '20px',
+    fontWeight: 'bold',
+    color: '#d2c601',
   },
-  label: {
-    ...theme.typography['subline-lg'],
+  depositLabel: {
+    ...theme.typography['h3'],
     display: 'inline-flex',
-    color: theme.palette.text.disabled,
+    fontWeight: 'bold',
+    color: '#d2c601',
+  },
+  dailyValue: {
+    ...theme.typography['h3'],
+    paddingLeft: '20px',
+    fontWeight: 'bold',
+    color: '#09bec6',
+  },
+  dailyLabel: {
+    ...theme.typography['h3'],
+    display: 'inline-flex',
+    fontWeight: 'bold',
+    color: '#09bec6',
   },
   blurred: {
     filter: 'blur(.5rem)',
@@ -27,4 +39,5 @@ export const styles = (theme: Theme) => ({
   obscured: {
     color: '#424866',
   },
+
 });

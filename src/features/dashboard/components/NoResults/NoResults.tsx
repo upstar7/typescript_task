@@ -55,6 +55,7 @@ const NotConnected = memo(function () {
     if (walletAddress) {
       dispatch(doDisconnectWallet());
     } else {
+      console.log('222 4')
       dispatch(askForWalletConnection());
     }
   }, [dispatch, walletAddress]);

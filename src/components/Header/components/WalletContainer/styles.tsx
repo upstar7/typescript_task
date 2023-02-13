@@ -6,7 +6,8 @@ export const styles = (theme: Theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: '8px',
-    padding: '8px 16px',
+    padding: '8px 26px',
+    // backgroundColor: '#d4c600',
   },
   address: {
     ...theme.typography['body-lg-med'],
@@ -20,9 +21,9 @@ export const styles = (theme: Theme) => ({
   disconnected: {
     display: 'flex',
     justifyContent: 'center',
-    background: theme.palette.background.cta,
+    backgroundColor: '#d4c600',
     '& $address': {
-      color: theme.palette.text.primary,
+      color: 'black',
       textOverflow: 'clip',
     },
   },
@@ -37,7 +38,7 @@ export const styles = (theme: Theme) => ({
   },
   connected: {
     borderColor: theme.palette.background.cta,
-    backgroundColor: '#242737',
+    backgroundColor: 'black',
   },
   loading: {
     paddingTop: '4px',

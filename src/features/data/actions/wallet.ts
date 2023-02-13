@@ -93,6 +93,7 @@ export const askForWalletConnection = createAsyncThunk(
   async () => {
     try {
       const walletConnection = await getWalletConnectionApiInstance();
+      console.log('111 ', {walletConnection})
       await walletConnection.askUserToConnectIfNeeded();
     } catch (err) {
       console.error('askForWalletConnection', err);

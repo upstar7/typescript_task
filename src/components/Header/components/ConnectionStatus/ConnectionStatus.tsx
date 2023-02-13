@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import React, { memo, Suspense } from 'react';
 import { useAppSelector } from '../../../../store';
 
-import { NetworkStatus } from '../../../NetworkStatus';
+// import { NetworkStatus } from '../../../NetworkStatus';
 import { styles } from './styles';
 
 // lazy load web3 related stuff, as libs are quite heavy
@@ -16,7 +16,7 @@ export const ConnectionStatus = memo(function () {
   const open = useAppSelector(state => state.ui.dataLoader.statusIndicator.open);
   return (
     <div className={clsx(classes.container, { [classes.open]: open })}>
-      <NetworkStatus />
+      {/* <NetworkStatus /> */}
       <div>
         <Suspense fallback={<>...</>}>
           <WalletContainer />

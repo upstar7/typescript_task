@@ -28,6 +28,7 @@ export const VaultTypeButtonFilter = memo<VaultTypeButtonFilterProps>(function (
   const value = useAppSelector(selectFilterVaultType);
   const handleChange = useCallback<ToggleButtonsProps['onChange']>(
     value => {
+      console.log(value);
       dispatch(filteredVaultsActions.setVaultType(value as FilteredVaultsState['vaultType']));
     },
     [dispatch]

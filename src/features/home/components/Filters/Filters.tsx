@@ -1,14 +1,19 @@
 import React, { memo } from 'react';
 import { makeStyles, useMediaQuery } from '@material-ui/core';
 import { ChainButtonFilter, ChainDropdownFilter } from './components/ChainFilters';
+// import { CheckboxFilter, CheckboxFilterProps } from './components/CheckboxFilter';
 import { UserCategoryButtonFilter } from './components/UserCategoryFilters';
 import { VaultTypeButtonFilter, VaultTypeDropdownFilter } from './components/VaultTypeFilters';
 import { styles } from './styles';
 import { ExtendedFiltersButton } from './components/ExtendedFilters';
 import { ClearFiltersButton } from './components/ClearFiltersButton';
 import clsx from 'clsx';
-import { VaultCategoryButtonFilter } from './components/VaultCategoryFilters';
+import {
+  VaultCategoryButtonFilter,
+  VaultCategoryDropdownFilter,
+} from './components/VaultCategoryFilters';
 import { Theme } from '@material-ui/core/styles';
+import { CheckboxFilter } from './components/CheckboxFilter';
 
 const useStyles = makeStyles(styles);
 
@@ -18,7 +23,11 @@ export const Filters = memo(function Filters() {
 
   return (
     <div className={classes.filters}>
-      {desktopView ? <ChainButtonFilter className={classes.chain} /> : null}
+      {desktopView ? (
+        <ChainButtonFilter className={classes.chain} />
+      ) : (
+        <ChainDropdownFilter className={classes.chain} />
+      )}
       <UserCategoryButtonFilter className={classes.userCategory} />
       {desktopView ? (
         <>
@@ -27,7 +36,7 @@ export const Filters = memo(function Filters() {
         </>
       ) : (
         <>
-          <ChainDropdownFilter className={classes.chain} />
+          <VaultCategoryDropdownFilter className={classes.vaultType} />
           <VaultTypeDropdownFilter className={classes.vaultType} />
         </>
       )}
@@ -35,7 +44,9 @@ export const Filters = memo(function Filters() {
         className={clsx(classes.button, classes.extended)}
         desktopView={desktopView}
       />
-      <ClearFiltersButton className={clsx(classes.button, classes.clear)} />
+      {/* <ClearFiltersButton className={clsx(classes.button, classes.clear)} /> */}
     </div>
   );
+
+
 });

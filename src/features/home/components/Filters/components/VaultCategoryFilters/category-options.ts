@@ -2,8 +2,8 @@ import { FilteredVaultsState } from '../../../../../data/reducers/filtered-vault
 
 export const CATEGORY_OPTIONS: Record<FilteredVaultsState['vaultCategory'], string> = {
   all: 'Filter-CatgryAll',
-  featured: 'Filter-CatgryFeatured',
-  stable: 'Filter-CatgryStabl',
+  featured: 'Filter-Correlated',
+  stable: 'Filter-Stable',
   bluechip: 'Filter-CatgryBlue',
   beefy: 'Filter-CatgryBeefy',
 };

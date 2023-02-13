@@ -1,43 +1,27 @@
 export const styles = theme => ({
   userStats: {
     display: 'flex',
-    '& div:last-child': {
-      marginRight: '0',
-    },
     [theme.breakpoints.up('md')]: {
       justifyContent: 'flex-end',
     },
   },
   stat: {
-    paddingTop: 0,
+    paddingTop: '10px',
     paddingBottom: 0,
-    marginRight: theme.spacing(4),
-    [theme.breakpoints.down('sm')]: {
-      margin: '8px 24px 8px 0px',
-    },
   },
   value: {
-    ...theme.typography['h2'],
-    color: theme.palette.text.primary,
+    ...theme.typography['h3'],
+    paddingLeft: '20px',
+    fontWeight: 'bold',
+    color: '#d2c601',
   },
   label: {
-    ...theme.typography['subline-lg'],
+    ...theme.typography['h3'],
     display: 'inline-flex',
-    color: theme.palette.text.disabled,
+    fontWeight: 'bold',
+    color: '#d2c601',
   },
   obscured: {
     color: '#424866',
-  },
-  labelWithIcon: {
-    display: 'flex',
-    alignItems: 'center',
-    [theme.breakpoints.up('md')]: {
-      justifyContent: 'flex-end',
-    },
-  },
-  icon: {
-    marginLeft: theme.spacing(0.5),
-    cursor: 'pointer',
-    display: 'block',
   },
 });

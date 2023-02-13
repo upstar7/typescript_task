@@ -98,6 +98,7 @@ function _Preview() {
   };
 
   const handleConnectWallet = () => {
+    console.log('222 3')
     dispatch(askForWalletConnection());
   };
 

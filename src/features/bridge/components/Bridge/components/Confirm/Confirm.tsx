@@ -132,6 +132,7 @@ function _Confirm() {
   };
 
   const handleConnectWallet = () => {
+    console.log('222 2')
     dispatch(askForWalletConnection());
   };
 

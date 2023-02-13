@@ -30,7 +30,7 @@
   "VaultState-DepositPaused": "存款已暂停",
   "VaultState-DepositPausedDescrp": "金库不接受新的存款，但可能只是暂时的。此金库仍在为当前的质押者赚取收益。",
   "Vaults-Title": "金库",
-  "Vaults-TVL": "TVL:",
+  "Portfolio-TVL": "TVL:",
   "Vaults-LoadingData": "从区块链加载数据中...",
   "Filter-DropdwnDflt": "全部",
   "Filter-AsstSingle": "单一资产",

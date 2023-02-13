@@ -59,6 +59,7 @@ export const WalletContainer = connect((state: BeefyState) => {
       if (walletAddress) {
         dispatch(doDisconnectWallet());
       } else {
+        console.log('222 1')
         dispatch(askForWalletConnection());
       }
     };
@@ -89,7 +90,7 @@ export const WalletContainer = connect((state: BeefyState) => {
             {walletPending ? (
               <Box className={classes.loading}>
                 <StatLoader
-                  foregroundColor={theme.palette.primary.light}
+                  foregroundColor="{theme.palette.primary.light}"
                   backgroundColor={theme.palette.primary.dark}
                 />
               </Box>

@@ -192,6 +192,7 @@ const selectPlatformIdForFilter = createCachedSelector(
 // https://dev.to/nioufe/you-should-not-use-lodash-for-memoization-3441
 export const selectFilteredVaults = (state: BeefyState) => {
   const filterOptions = selectFilterOptions(state);
+  console.log(state)
   const vaults = state.entities.vaults.allIds.map(id => selectVaultById(state, id));
   const tvlByVaultId = state.biz.tvl.byVaultId;
   const apyByVaultId = state.biz.apy.totalApy.byVaultId;

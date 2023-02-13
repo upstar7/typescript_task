@@ -9,9 +9,13 @@ import { Vaults } from './components/Vaults';
 import { useAppSelector } from '../../store';
 import { RenBannerHome } from '../../components/Banners/RenBanner';
 
+import { CheckboxFilterGroup } from './components/Filters/components/CheckboxFilterGroup';
+import { useTranslation } from 'react-i18next';
+
 const useStyles = makeStyles(styles);
 
 export const Home = memo(function Home() {
+  const { t } = useTranslation();
   const classes = useStyles();
   const isVaultListAvailable = useAppSelector(selectIsVaultListAvailable);
 
@@ -21,11 +25,15 @@ export const Home = memo(function Home() {
 
   return (
     <>
-      <div className={classes.top}>
-        <RenBannerHome />
-        <Portfolio />
-      </div>
       <Container maxWidth="lg" className={classes.vaultContainer}>
+        <div>
+          <RenBannerHome />
+          <div className={classes.portfolioContainer}>
+            <CheckboxFilterGroup />
+
+            <Portfolio />
+          </div>
+        </div>
         <Filters />
         <Vaults />
       </Container>
