@@ -112,14 +112,14 @@ export class WalletConnectionApi implements IWalletConnectionApi {
   private createOnboard() {
     const onboard = Onboard({
       wallets: this.getOnboardWalletInitializers(),
-      theme: {
-        '--w3o-background-color': '#1A1D26',
-        '--w3o-foreground-color': '#242835',
-        '--w3o-text-color': '#EFF1FC',
-        '--w3o-border-color': 'transparent',
-        '--w3o-action-color': '#59A662',
-        '--w3o-border-radius': '8px',
-      },
+      // theme: {
+      //   '--w3o-background-color': '#1A1D26',
+      //   '--w3o-foreground-color': '#242835',
+      //   '--w3o-text-color': '#EFF1FC',
+      //   '--w3o-border-color': 'transparent',
+      //   '--w3o-action-color': '#59A662',
+      //   '--w3o-border-radius': '8px',
+      // },
       appMetadata: {
         name: 'Beefy Finance',
         icon: require(`../../../../images/bifi-logos/Pop_Up_logo_notext.png`).default,

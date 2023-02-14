@@ -62,7 +62,7 @@ function GraphComponent({ vaultId }: { vaultId: VaultEntity['id'] }) {
 
   return (
     <Card>
-      <CardHeader>
+      <CardHeader className={classes.header}>
         <div className={classes.titleBox}>
           <CardTitle title={t('Graph-RateHist')} />
           <div className={classes.headerTabs}>

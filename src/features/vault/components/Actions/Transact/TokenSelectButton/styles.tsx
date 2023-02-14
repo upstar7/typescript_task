@@ -7,7 +7,7 @@ export const styles = (theme: Theme) => ({
     border: 'none',
     boxShadow: 'none',
     outline: 'none',
-    background: '#111321',
+    background: '#161a32',
     borderRadius: '8px',
     display: 'flex',
     alignItems: 'center',

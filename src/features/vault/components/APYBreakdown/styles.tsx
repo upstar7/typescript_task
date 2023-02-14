@@ -1,9 +1,6 @@
 import { Theme } from '@material-ui/core/styles';
 
 export const styles = (theme: Theme) => ({
-  container: {
-    paddingBottom: '50px',
-  },
   header: {
     backgroundColor: '#161a32',
     display: 'flex',
@@ -60,6 +57,7 @@ export const styles = (theme: Theme) => ({
     rowGap: '24px',
   },
   audit: {
+    paddingTop: '20px',
     display: 'flex',
   },
   auditIcon: {

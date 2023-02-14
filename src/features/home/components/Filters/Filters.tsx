@@ -2,16 +2,12 @@ import React, { memo } from 'react';
 import { makeStyles, useMediaQuery } from '@material-ui/core';
 import { ChainButtonFilter, ChainDropdownFilter } from './components/ChainFilters';
 // import { CheckboxFilter, CheckboxFilterProps } from './components/CheckboxFilter';
-import { UserCategoryButtonFilter } from './components/UserCategoryFilters';
-import { VaultTypeButtonFilter, VaultTypeDropdownFilter } from './components/VaultTypeFilters';
+
 import { styles } from './styles';
 import { ExtendedFiltersButton } from './components/ExtendedFilters';
 import { ClearFiltersButton } from './components/ClearFiltersButton';
 import clsx from 'clsx';
-import {
-  VaultCategoryButtonFilter,
-  VaultCategoryDropdownFilter,
-} from './components/VaultCategoryFilters';
+
 import { Theme } from '@material-ui/core/styles';
 import { CheckboxFilter } from './components/CheckboxFilter';
 
@@ -28,23 +24,7 @@ export const Filters = memo(function Filters() {
       ) : (
         <ChainDropdownFilter className={classes.chain} />
       )}
-      <UserCategoryButtonFilter className={classes.userCategory} />
-      {desktopView ? (
-        <>
-          <VaultCategoryButtonFilter className={classes.vaultCategory} />
-          <VaultTypeButtonFilter className={classes.vaultType} />
-        </>
-      ) : (
-        <>
-          <VaultCategoryDropdownFilter className={classes.vaultType} />
-          <VaultTypeDropdownFilter className={classes.vaultType} />
-        </>
-      )}
-      <ExtendedFiltersButton
-        className={clsx(classes.button, classes.extended)}
-        desktopView={desktopView}
-      />
-      {/* <ClearFiltersButton className={clsx(classes.button, classes.clear)} /> */}
+    
     </div>
   );
 

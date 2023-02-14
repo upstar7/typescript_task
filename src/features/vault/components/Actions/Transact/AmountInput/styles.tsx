@@ -3,7 +3,7 @@ import { Theme } from '@material-ui/core/styles';
 export const styles = (theme: Theme) => ({
   input: {
     color: '#D0D0DA',
-    background: '#111321',
+    background: '#161a32',
     borderRadius: '8px',
     width: '100%',
     display: 'flex',

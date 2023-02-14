@@ -10,6 +10,7 @@ export const styles = (theme: Theme) => ({
   },
   flex: {
     display: 'flex',
+    flexWrap: 'wrap' as const,
     alignItems: 'center',
     alignContent: 'center',
     columnGap: theme.spacing(10),
@@ -21,13 +22,10 @@ export const styles = (theme: Theme) => ({
     alignContent: 'center',
     columnGap: theme.spacing(10),
   },
-  // connection: {
-  //   display: 'flex',
-  //   position: 'absolute',
-  //   columnGap: theme.spacing(10),
-
-  //   // paddingRight: '20px',
-  // },
+  connection: {
+    display: 'flex',
+    columnGap: theme.spacing(10),
+  },
   hasPortfolio: {
     backgroundColor: theme.palette.background.header,
   },

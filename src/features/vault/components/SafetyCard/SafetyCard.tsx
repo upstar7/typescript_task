@@ -56,7 +56,7 @@ function SafetyCardComponent({ vaultId }: { vaultId: VaultEntity['id'] }) {
             </Fragment>
           ))}
         </div>
-        <Collapsable
+        {/* <Collapsable
           titleClassName={classes.titleClassName}
           containerClassName={classes.howItWorksContainer}
           title={t('How-It-Works')}
@@ -65,7 +65,7 @@ function SafetyCardComponent({ vaultId }: { vaultId: VaultEntity['id'] }) {
             <p>{t('Safety-HigherSafer')}</p>
             <p>{t('Safety-BeefySecure')}</p>
           </div>
-        </Collapsable>
+        </Collapsable> */}
       </CardContent>
     </Card>
   );

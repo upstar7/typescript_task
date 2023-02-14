@@ -119,6 +119,8 @@ const _NonBoostedVaultDeposited = connect(
 
     return (
       <ValueBlock
+        borderLeft
+        divide
         label={t('Vault-deposited')}
         value={<TokenAmountFromEntity amount={deposit} token={depositToken} minShortPlaces={4} />}
         usdValue={hasDeposit ? depositUsd : null}

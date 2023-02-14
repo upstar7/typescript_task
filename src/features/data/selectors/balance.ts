@@ -70,7 +70,7 @@ export const selectUserDepositedVaultIdsForAsset = (state: BeefyState, asset: st
   });
 };
 
-export const selectHasUserDepositInVault = (state: BeefyState, vaultId: VaultEntity['id']) => {
+export const selectHasUserStakedVault = (state: BeefyState, vaultId: VaultEntity['id']) => {
   const walletBalance = _selectWalletBalance(state);
   return walletBalance ? walletBalance.depositedVaultIds.indexOf(vaultId) !== -1 : false;
 };
@@ -133,7 +133,7 @@ export const selectTotalUserBalanceInBoostsInDepositToken = (
   return BIG_ZERO;
 };
 
-export const selectIsUserEligibleForVault = (state: BeefyState, vaultId: VaultEntity['id']) => {
+export const selectIsUserStakeableForVault = (state: BeefyState, vaultId: VaultEntity['id']) => {
   const walletBalance = _selectWalletBalance(state);
   return walletBalance ? walletBalance.eligibleVaultIds.indexOf(vaultId) !== -1 : false;
 };

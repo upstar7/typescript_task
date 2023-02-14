@@ -184,14 +184,10 @@ function _YearlyApyStats({ vaultId }: { vaultId: VaultEntity['id'] }) {
 
   return (
     <ValueBlock
+      divide
       label={isGovVault(vault) ? t('APR') : t('APY')}
       textContent={false}
-      value={
-        <LabeledStat
-          boosted={isBoosted && shouldShowApy ? formatted.boostedTotalApy : null}
-          value={shouldShowApy ? formatted.totalApy : '-'}
-        />
-      }
+      value={isBoosted && shouldShowApy ? formatted.boostedTotalApy : null}
       tooltip={
         shouldShowApy
           ? {
@@ -230,14 +226,10 @@ function _DailyApyStats({ vaultId }: { vaultId: VaultEntity['id'] }) {
 
   return (
     <ValueBlock
+      borderRight={true}
       label={t('Vault-Daily')}
       textContent={false}
-      value={
-        <LabeledStat
-          boosted={isBoosted && shouldShowApy ? formatted.boostedTotalDaily : null}
-          value={shouldShowApy ? formatted.totalDaily : '-'}
-        />
-      }
+      value={isBoosted && shouldShowApy ? formatted.boostedTotalDaily : null}
       tooltip={
         shouldShowApy
           ? {

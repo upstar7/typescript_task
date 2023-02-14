@@ -8,25 +8,40 @@ import { CheckboxFilter } from '../CheckboxFilter';
 const useStyles = makeStyles(styles);
 export const CheckboxFilterGroup = () => {
   const classes = useStyles();
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   return (
     <div>
       <div className={classes.checkboxFilter}>
-        <CheckboxFilter
-          className={classes.checkbox}
-          filter="onlyRetired"
-          label={t('Filter-AsstSingle')}
-        />
-        <CheckboxFilter
-          className={classes.checkbox}
-          filter="onlyPaused"
-          label={t('Filter-Paused')}
-        />
-        <CheckboxFilter
-          className={classes.checkbox}
-          filter="onlyBoosted"
-          label={t('Filter-Boost')}
-        />
+        <div>
+          <CheckboxFilter
+            className={classes.checkbox}
+            filter="onlySingle"
+            label={t('Filter-AsstSingle')}
+          />
+          <CheckboxFilter
+            className={classes.checkbox}
+            filter="onlyStable"
+            label={t('Filter-Stable')}
+          />
+          <CheckboxFilter
+            className={classes.checkbox}
+            filter="onlyCorrelated"
+            label={t('Filter-Correlated')}
+          />
+        </div>
+        <div>
+          <CheckboxFilter className={classes.checkbox} filter="onlyLps" label={t('Filter-Lps')} />
+          <CheckboxFilter
+            className={classes.checkbox}
+            filter="onlyStaked"
+            label={t('Filter-Staked')}
+          />
+          <CheckboxFilter
+            className={classes.checkbox}
+            filter="onlyStakeable"
+            label={t('Filter-Stakeable')}
+          />
+        </div>
       </div>
     </div>
   );

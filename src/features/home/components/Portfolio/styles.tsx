@@ -10,6 +10,7 @@ export const styles = theme => ({
   },
   userStats: {},
   platform: {
+    width: '100%',
     [theme.breakpoints.up('md')]: {
       textAlign: 'right' as const,
     },

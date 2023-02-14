@@ -58,61 +58,6 @@ function StrategyCardComponent({ vaultId }: { vaultId: VaultEntity['id'] }) {
         <div className={classes.text}>
           <StrategyDescription vaultId={vaultId} />
         </div>
-        {showApy ? (
-          <div className={classes.apysContainer}>
-            <div className={classes.apyTitle}>{t('Vault-ApyBreakdown')}</div>
-            <div className={classes.apys}>
-              <div className={classes.apy}>
-                <div className={classes.apyLabel}>{t('Vault-ApyTotal')}</div>
-                <div className={classes.apyValue}>
-                  {isBoosted ? formatted.boostedTotalApy : formatted.totalApy}
-                </div>
-              </div>
-              {values.vaultApr && (
-                <div className={classes.apy}>
-                  <div className={classes.apyLabel}>{t('Vault-VaultApr')}</div>
-                  <div className={classes.apyValue}>{formatted.vaultApr}</div>
-                </div>
-              )}
-              {values.tradingApr > 0 && (
-                <div className={classes.apy}>
-                  <div className={classes.apyLabel}>{t('Vault-AprTrading')}</div>
-                  <div className={classes.apyValue}>{formatted.tradingApr}</div>
-                </div>
-              )}
-              {values.liquidStakingApr > 0 && (
-                <div className={classes.apy}>
-                  <div className={classes.apyLabel}>{t('Vault-AprLiquidStaking')}</div>
-                  <div className={classes.apyValue}>{formatted.liquidStakingApr}</div>
-                </div>
-              )}
-              {values.composablePoolApr > 0 && (
-                <div className={classes.apy}>
-                  <div className={classes.apyLabel}>{t('Vault-AprComposablePool')}</div>
-                  <div className={classes.apyValue}>{formatted.composablePoolApr}</div>
-                </div>
-              )}
-              {isBoosted && (
-                <div className={classes.apy}>
-                  <div className={classes.apyLabel}>{t('Vault-AprBoost')}</div>
-                  <div className={classes.apyValue}>{formatted.boostApr}</div>
-                </div>
-              )}
-            </div>
-          </div>
-        ) : null}
-        <div className={classes.audits}>
-          {isVaultAudited ? (
-            <div className={classes.audit}>
-              <img alt="Audited" src={shield} className={classes.auditIcon} />
-              <div className={classes.auditLabel}>{t('Vault-Auditd')}</div>
-            </div>
-          ) : null}
-          <div className={classes.audit}>
-            <img alt="Community Audited" src={shield} className={classes.auditIcon} />
-            <div className={classes.auditLabel}>{t('Vault-AuditdCommunity')}</div>
-          </div>
-        </div>
       </CardContent>
     </Card>
   );

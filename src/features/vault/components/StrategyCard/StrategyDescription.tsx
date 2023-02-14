@@ -14,10 +14,10 @@ export type StrategyDescriptionProps = {
 };
 
 const useStyles = makeStyles(styles);
-
 export const StrategyDescription = memo<StrategyDescriptionProps>(function StrategyDescription({
   vaultId,
 }) {
+  const classes = useStyles();
   const { t, i18n } = useTranslation();
   // Only included when !isGovVault so we can type assert to VaultStandard
   const vault = useAppSelector(state => selectVaultById(state, vaultId)) as VaultStandard;
@@ -65,7 +65,7 @@ export const StrategyDescription = memo<StrategyDescriptionProps>(function Strat
   ]);
 
   return (
-    <>
+    <div className={classes.container}>
       {vault.strategyTypeId === 'glp-gmx' ? (
         <Trans
           t={t}
@@ -78,7 +78,7 @@ export const StrategyDescription = memo<StrategyDescriptionProps>(function Strat
       ) : (
         t(i18nKey, options)
       )}
-    </>
+    </div>
   );
 });
 

@@ -58,13 +58,13 @@ export const styles = (theme: Theme) => ({
   },
   withScoreHigh: {
     '& $sm': {
-      backgroundColor: theme.palette.primary.main,
+      backgroundColor: '#d4c600',
     },
     '& $md': {
-      backgroundColor: theme.palette.primary.main,
+      backgroundColor: '#d4c600',
     },
     '& $lg': {
-      backgroundColor: theme.palette.primary.main,
+      backgroundColor: '#d4c600',
     },
   },
   withWhiteLabel: {

@@ -69,7 +69,7 @@ export const Header = memo(function () {
                   <NavItem title={'Header-BridgeBifi'} url="/bridge" Icon={BridgeIcon} />
                 </Hidden>
               </div>
-              <div className={classes.flex} style={{ position: 'absolute', right: '20px' }}>
+              <div className={classes.connection} style={{ position: 'absolute', right: '20px' }}>
                 <ConnectionStatus />
                 <Hidden lgUp>
                   <MobileMenu />

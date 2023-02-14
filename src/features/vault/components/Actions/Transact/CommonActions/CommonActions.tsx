@@ -19,7 +19,7 @@ export const ActionConnect = memo<ActionButtonProps>(function ({ className }) {
 
   return (
     <Button
-      variant="success"
+      variant="yellow"
       fullWidth={true}
       borderless={true}
       className={className}
@@ -41,7 +41,7 @@ export const ActionSwitch = memo<ActionSwitchProps>(function ({ chainId, classNa
 
   return (
     <Button
-      variant="success"
+      variant="default"
       fullWidth={true}
       borderless={true}
       className={className}

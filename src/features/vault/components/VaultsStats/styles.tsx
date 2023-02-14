@@ -21,7 +21,7 @@ export const styles = (theme: Theme) => ({
     justifyContent: 'flex-start',
     backgroundColor: theme.palette.background.default,
     borderRadius: '8px',
-    padding: '16px 16px',
+    // padding: '16px 16px',
   },
   depositStats: {
     width: '100%',
@@ -29,16 +29,9 @@ export const styles = (theme: Theme) => ({
   depositStatsBox: {
     height: 96,
     display: 'flex',
-    flexWrap: 'nowrap' as const,
-    justifyContent: 'flex-end',
-    textAlign: 'end' as const,
+    justifyContent: 'flex-start',
     backgroundColor: theme.palette.background.default,
     borderRadius: '8px',
-    padding: '16px 24px',
-    [theme.breakpoints.down('md')]: {
-      justifyContent: 'flex-start',
-      textAlign: 'start' as const,
-    },
   },
   stat: {
     display: 'flex',
@@ -50,31 +43,11 @@ export const styles = (theme: Theme) => ({
       marginRight: theme.spacing(2),
     },
   },
-  stat1: {
-    paddingTop: 0,
-    paddingBottom: 0,
-    display: 'flex',
-    justifyContent: 'flex-end',
-    [theme.breakpoints.down('md')]: {
-      marginLeft: 0,
-      marginRight: theme.spacing(4),
-      justifyContent: 'flex-start',
-    },
-  },
   stat3: {
     display: 'flex',
     flexDirection: 'column' as const,
     justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-  },
-  stat4: {
-    display: 'flex',
-    flexDirection: 'column' as const,
-    justifyContent: 'flex-start',
-    alignItems: 'flex-end',
-    [theme.breakpoints.down('md')]: {
-      alignItems: 'flex-start',
-    },
+    alignItems: 'center',
   },
   divider: {
     marginRight: theme.spacing(3),

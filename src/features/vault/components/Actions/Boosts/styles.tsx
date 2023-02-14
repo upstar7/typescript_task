@@ -31,7 +31,7 @@ export const styles = (theme: Theme) => ({
   },
   title: {
     ...theme.typography['h2'],
-    color: '#E88225',
+    color: '#d4c600',
     display: 'flex',
     alignItems: 'center',
   },

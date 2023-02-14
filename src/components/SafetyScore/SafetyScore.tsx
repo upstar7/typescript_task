@@ -37,7 +37,7 @@ export const SafetyScore = memo<SafetyScoreProps>(function SafetyScore({
         [classes.withRightAlign]: align === 'right',
       })}
     >
-      <div className={classes.label}>{scoreText}</div>
+      {/* <div className={classes.label}>{scoreText}</div> */}
       <div className={classes.barsContainer}>
         <div className={clsx(classes.bar, classes.sm)} />
         <div className={clsx(classes.bar, classes.md)} />

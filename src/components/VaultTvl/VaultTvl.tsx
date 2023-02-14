@@ -37,6 +37,8 @@ const _VaultTvl = connect((state: BeefyState, { vaultId }: { vaultId: VaultEntit
 
   return (
     <ValueBlock
+      borderLeft
+      divide
       label={t('TVL')}
       value={vaultTvl}
       blurred={false}

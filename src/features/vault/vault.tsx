@@ -8,6 +8,7 @@ import { StrategyCard } from './components/StrategyCard';
 import { SafetyCard } from './components/SafetyCard';
 import { Graph } from './components/Graph';
 import { VaultsStats } from './components/VaultsStats';
+import { APYBreakdown } from './components/APYBreakdown';
 import { BoostCard } from './components/BoostCard';
 import { GovDetailsCard } from './components/GovDetailsCard';
 import {
@@ -15,7 +16,7 @@ import {
   selectVaultExistsById,
   selectVaultIdIgnoreCase,
 } from '../data/selectors/vaults';
-import { selectIsVaultPreStakedOrBoosted } from '../data/selectors/boosts';
+// import { selectIsVaultPreStakedOrBoosted } from '../data/selectors/boosts';
 import { isGovVault, VaultEntity } from '../data/entities/vault';
 import { selectChainById } from '../data/selectors/chains';
 import { selectIsConfigAvailable } from '../data/selectors/data-loader';
@@ -72,9 +73,9 @@ const VaultContent = memo<VaultContentProps>(function VaultContent({ vaultId }) 
   const { t } = useTranslation();
   const vault = useAppSelector(state => selectVaultById(state, vaultId));
   const chain = useAppSelector(state => selectChainById(state, vault.chainId));
-  const isBoostedOrPreStake = useAppSelector(state =>
-    selectIsVaultPreStakedOrBoosted(state, vaultId)
-  );
+  // const isBoostedOrPreStake = useAppSelector(state =>
+  //   selectIsVaultPreStakedOrBoosted(state, vaultId)
+  // );
 
   return (
     <>
@@ -109,18 +110,19 @@ const VaultContent = memo<VaultContentProps>(function VaultContent({ vaultId }) 
           <div className={classes.contentColumns}>
             <div className={classes.columnActions}>
               <Actions vaultId={vaultId} />
+              <SafetyCard vaultId={vaultId} />
               <Hidden smDown>
                 <InsuranceCards vaultId={vaultId} />
                 <LeverageCards vaultId={vaultId} />
               </Hidden>
             </div>
             <div className={classes.columnInfo}>
-              {isBoostedOrPreStake && <BoostCard vaultId={vaultId} />}
+              {/* {isBoostedOrPreStake && <BoostCard vaultId={vaultId} />} */}
               {isGovVault(vault) && <GovDetailsCard vaultId={vaultId} />}
               {!isGovVault(vault) ? <Graph vaultId={vaultId} /> : null}
               <LiquidityPoolBreakdownLoader vaultId={vaultId} />
-              <SafetyCard vaultId={vaultId} />
               {!isGovVault(vault) ? <StrategyCard vaultId={vaultId} /> : null}
+              {!isGovVault(vault) ? <APYBreakdown vaultId={vaultId} /> : null}
               <InfoCards chainId={vault.chainId} vaultId={vault.id} />
               <AssetsCard vaultId={vault.id} />
               <Hidden mdUp>

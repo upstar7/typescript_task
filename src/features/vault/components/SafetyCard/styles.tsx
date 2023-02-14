@@ -3,6 +3,7 @@ import { Theme } from '@material-ui/core/styles';
 export const styles = (theme: Theme) => ({
   header: {
     display: 'flex',
+    backgroundColor: '#161a32',
   },
   riskList: {
     marginBottom: '32px',

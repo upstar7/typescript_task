@@ -1,6 +1,9 @@
 import { Theme } from '@material-ui/core/styles';
 
 export const styles = (theme: Theme) => ({
+  header: {
+    background: '#161a32',
+  },
   titleBox: {
     display: 'flex',
     flexDirection: 'column' as const,

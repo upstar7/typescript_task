@@ -2,6 +2,7 @@ import { Theme } from '@material-ui/core';
 
 export const styles = (theme: Theme) => ({
   header: {
+    backgroundColor: '#161a32',
     [theme.breakpoints.up('sm')]: {
       display: 'flex',
       justifyContent: 'space-between',

@@ -3,17 +3,19 @@ import { Theme } from '@material-ui/core';
 export const styles = (theme: Theme) => ({
   value: {
     ...theme.typography['body-lg-med'],
-    margin: 0,
-    padding: 0,
+    width: '100%',
+    marginTop: '12px',
     whiteSpace: 'nowrap' as const,
-    [theme.breakpoints.down('md')]: {
-      textAlign: 'left' as const,
-    },
+    textAlign: 'center' as const,
+    [theme.breakpoints.down('md')]: {},
   },
   label: {
+    width: '100%',
     ...theme.typography['subline-sm'],
-    color: theme.palette.text.disabled,
-    textAlign: 'left' as const,
+    padding: '12px 0',
+    backgroundColor: '#161a32',
+    color: theme.palette.text.primary,
+    // textAlign: 'left' as const,
     [theme.breakpoints.up('md')]: {
       textAlign: 'center' as const,
     },
@@ -35,5 +37,14 @@ export const styles = (theme: Theme) => ({
   },
   noTextContentLoader: {
     paddingTop: '3px',
+  },
+  borderLeft: {
+    borderTopLeftRadius: '8px',
+  },
+  borderRight: {
+    borderTopRightRadius: '8px',
+  },
+  divide: {
+    borderRight: '2px solid white',
   },
 });

@@ -30,7 +30,6 @@ export const Home = memo(function Home() {
           <RenBannerHome />
           <div className={classes.portfolioContainer}>
             <CheckboxFilterGroup />
-
             <Portfolio />
           </div>
         </div>

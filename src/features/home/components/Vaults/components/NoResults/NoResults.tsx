@@ -2,7 +2,7 @@ import { memo, PropsWithChildren, useCallback } from 'react';
 import { makeStyles } from '@material-ui/core';
 import { useAppDispatch, useAppSelector } from '../../../../../../store';
 import {
-  selectFilterUserCategory,
+  // selectFilterUserCategory,
   selectHasActiveFilterExcludingUserCategoryAndSort,
 } from '../../../../../data/selectors/filtered-vaults';
 import { styles } from './styles';
@@ -62,7 +62,7 @@ const NotDepositedMessage = memo<MessageProps>(function ({ title, text }) {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const handleViewAll = useCallback(() => {
-    dispatch(filteredVaultsActions.setUserCategory('all'));
+    // dispatch(filteredVaultsActions.setUserCategory('all'));
   }, [dispatch]);
 
   return (
@@ -85,30 +85,30 @@ const LoadingMessage = memo(function () {
 
 export const NoResults = memo(function () {
   const hasActiveFilter = useAppSelector(selectHasActiveFilterExcludingUserCategoryAndSort);
-  const userCategory = useAppSelector(selectFilterUserCategory);
+  // const userCategory = useAppSelector(selectFilterUserCategory);
   const userBalanceAvailable = useAppSelector(selectIsUserBalanceAvailable);
   const isWalletKnown = useAppSelector(selectIsWalletKnown);
 
-  if (!isWalletKnown && (userCategory === 'eligible' || userCategory === 'deposited')) {
-    return (
-      <NotConnectedMessage
-        title={'NoResults-NotConnected'}
-        text={
-          userCategory === 'deposited'
-            ? 'NoResults-ConnectToViewMyVaults'
-            : 'NoResults-ConnectToViewEligibleVaults'
-        }
-      />
-    );
-  }
+  // if (!isWalletKnown && (userCategory === 'eligible' || userCategory === 'deposited')) {
+  //   return (
+  //     <NotConnectedMessage
+  //       title={'NoResults-NotConnected'}
+  //       text={
+  //         userCategory === 'deposited'
+  //           ? 'NoResults-ConnectToViewMyVaults'
+  //           : 'NoResults-ConnectToViewEligibleVaults'
+  //       }
+  //     />
+  //   );
+  // }
 
-  if (!userBalanceAvailable && (userCategory === 'eligible' || userCategory === 'deposited')) {
-    return <LoadingMessage />;
-  }
+  // if (!userBalanceAvailable && (userCategory === 'eligible' || userCategory === 'deposited')) {
+  //   return <LoadingMessage />;
+  // }
 
-  if (!hasActiveFilter && userCategory === 'deposited') {
-    return <NotDepositedMessage title="NoResults-NotDeposited" text="NoResults-FindVault" />;
-  }
+  // if (!hasActiveFilter && userCategory === 'deposited') {
+  //   return <NotDepositedMessage title="NoResults-NotDeposited" text="NoResults-FindVault" />;
+  // }
 
   return <Message title="NoResults-NoResultsFound" text="NoResults-TryClearFilters" />;
 });

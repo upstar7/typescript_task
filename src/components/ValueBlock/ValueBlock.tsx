@@ -16,6 +16,9 @@ export function ValueBlock({
   usdValue,
   loading = false,
   blurred = false,
+  borderLeft = false,
+  borderRight = false,
+  divide = false,
 }: {
   label: ReactNode;
   value: ReactNode;
@@ -24,36 +27,43 @@ export function ValueBlock({
   usdValue?: ReactNode;
   loading?: boolean;
   blurred?: boolean;
+  borderLeft?: boolean;
+  borderRight?: boolean;
+  divide?: boolean;
+
 }) {
   const classes = useStyles();
   return (
     <>
-      {tooltip ? (
-        <div
-          className={classes.tooltipLabel}
-          onClick={popoverInLinkHack__popoverContainerHandler}
-          onTouchStart={popoverInLinkHack__popoverContainerHandler}
-        >
-          <div className={classes.label}>{label}</div>
-          <div className={classes.tooltipHolder}>
-            <Popover title={tooltip.title}>{tooltip.content}</Popover>
-          </div>
-        </div>
-      ) : (
-        <div className={classes.label}>{label}</div>
-      )}
-
+      <div
+        className={clsx({
+          [classes.label]: true,
+          [classes.borderLeft]: borderLeft,
+          [classes.borderRight]: borderRight,
+        })}
+      >
+        {label}
+      </div>
       {textContent ? (
         <div
           className={clsx({
             [classes.value]: true,
             [classes.blurred]: blurred,
+            [classes.divide]: divide,
           })}
         >
           {!loading ? <>{blurred ? '....' : value}</> : <ContentLoading />}
         </div>
       ) : !loading ? (
-        <>{blurred ? '....' : value}</>
+        <div
+          className={clsx({
+            [classes.value]: true,
+            [classes.blurred]: blurred,
+            [classes.divide]: divide,
+          })}
+        >
+          {blurred ? '....' : value}
+        </div>
       ) : (
         <Box className={classes.noTextContentLoader}>
           <ContentLoading />

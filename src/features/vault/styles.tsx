@@ -104,7 +104,7 @@ export const styles = (theme: Theme) => ({
   },
   platformLabel: {
     ...theme.typography['subline-sm'],
-    color: theme.palette.text.disabled,
+    color: '#d4c600',
     '& span': {
       color: theme.palette.text.primary,
       textTransform: 'uppercase' as const,

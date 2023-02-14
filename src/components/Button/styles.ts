@@ -84,6 +84,16 @@ export const styles = (theme: Theme) => ({
       borderColor: '#68a871',
     },
   },
+  yellow: {
+    color: '#000000',
+    backgroundColor: '#d4c600',
+    borderColor: '#d4c600',
+    '&:hover': {
+      color: '#000000',
+      backgroundColor: '#d4c600',
+      borderColor: '#d4c600',
+    },
+  },
   filter: {
     color: '#8A8EA8',
     backgroundColor: '#262A40',

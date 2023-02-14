@@ -24,47 +24,44 @@ function VaultsStatsComponent({ vaultId }: { vaultId: VaultEntity['id'] }) {
   return (
     <div className={classes.container}>
       <div className={classes.interestStats}>
-        <Box className={classes.interestStatsBox}>
-          <Box width={'33%'} className={classes.stat3}>
-            <VaultTvl vaultId={vaultId} />
-          </Box>
-          <Box className={classes.stat}>
-            <Divider className={classes.divider} orientation="vertical" />
+        <Grid container className={classes.interestStatsBox}>
+          <Grid item xs={4}>
+            <Box className={classes.stat3}>
+              <VaultTvl vaultId={vaultId} />
+            </Box>
+          </Grid>
+          <Grid item xs={4}>
             <Box className={classes.stat3}>
               <YearlyApyStats vaultId={vault.id} />
             </Box>
-          </Box>
-          <Box display="flex">
-            <Divider className={classes.divider} orientation="vertical" />
+          </Grid>
+          <Grid item xs={4}>
             <Box className={classes.stat3}>
               <DailyApyStats vaultId={vault.id} />
             </Box>
-          </Box>
-        </Box>
+          </Grid>
+        </Grid>
       </div>
       <div className={classes.depositStats}>
         <Grid container className={classes.depositStatsBox}>
-          <Grid item xs={6} className={classes.stat1}>
-            <Box className={classes.stat4}>
+          <Grid item xs={6}>
+            <Box className={classes.stat3}>
               <VaultDeposited vaultId={vaultId} />
             </Box>
           </Grid>
-          {(isGovVault(vault) || lastHarvestStr !== 'never') && (
-            <Divider flexItem={true} className={classes.divider1} orientation="vertical" />
-          )}
           {!isGovVault(vault) ? (
             <>
               {lastHarvestStr !== 'never' && (
                 <Grid item xs={6}>
-                  <Box className={classes.stat4}>
-                    <ValueBlock label={t('Vault-LastHarvest')} value={lastHarvestStr} />
+                  <Box className={classes.stat3}>
+                    <ValueBlock label={t('Vault-LastHarvest')} value={lastHarvestStr} borderRight />
                   </Box>
                 </Grid>
               )}
             </>
           ) : (
             <Grid item xs={6}>
-              <Box className={classes.stat4}>
+              <Box className={classes.stat3}>
                 <GovVaultRewards vaultId={vaultId} />
               </Box>
             </Grid>

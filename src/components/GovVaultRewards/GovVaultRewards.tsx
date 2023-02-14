@@ -53,6 +53,7 @@ const _GovVaultRewards = connect((state: BeefyState, { vaultId }: { vaultId: Vau
 
     return (
       <ValueBlock
+        borderRight
         label={t('Vault-Rewards')}
         value={`${rewardsEarnedToken} ${earnedToken.symbol}`}
         usdValue={hasRewards ? rewardsEarnedUsd : null}

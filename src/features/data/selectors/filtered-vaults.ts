@@ -3,14 +3,14 @@ import { sortBy } from 'lodash';
 import { BeefyState } from '../../../redux-types';
 import {
   isGovVault,
-  isVaultPaused,
-  isVaultRetired,
+  // isVaultPaused,
+  // isVaultRetired,
   shouldVaultShowInterest,
   VaultEntity,
 } from '../entities/vault';
 import {
-  selectHasUserDepositInVault,
-  selectIsUserEligibleForVault,
+  selectHasUserStakedVault,
+  selectIsUserStakeableForVault,
   selectUserVaultDepositInUsd,
   selectUserVaultDepositTokenWalletBalanceInUsd,
 } from './balance';
@@ -22,9 +22,9 @@ import {
   selectVaultsActiveBoostPeriodFinish,
 } from './boosts';
 import {
-  selectIsVaultBeefy,
-  selectIsVaultBlueChip,
-  selectIsVaultFeatured,
+  // selectIsVaultBeefy,
+  // selectIsVaultBlueChip,
+  selectIsVaultCorrelated,
   selectIsVaultStable,
   selectVaultById,
 } from './vaults';
@@ -42,10 +42,10 @@ export const selectFilterChainIds = (state: BeefyState) => state.ui.filteredVaul
 export const selectFilterSearchSortField = (state: BeefyState) => state.ui.filteredVaults.sort;
 export const selectFilterSearchSortDirection = (state: BeefyState) =>
   state.ui.filteredVaults.sortDirection;
-export const selectFilterUserCategory = (state: BeefyState) => state.ui.filteredVaults.userCategory;
-export const selectFilterVaultType = (state: BeefyState) => state.ui.filteredVaults.vaultType;
-export const selectFilterVaultCategory = (state: BeefyState) =>
-  state.ui.filteredVaults.vaultCategory;
+// export const selectFilterUserCategory = (state: BeefyState) => state.ui.filteredVaults.userCategory;
+// export const selectFilterVaultType = (state: BeefyState) => state.ui.filteredVaults.vaultType;
+// export const selectFilterVaultCategory = (state: BeefyState) =>
+//   state.ui.filteredVaults.vaultCategory;
 export const selectFilterPlatformId = (state: BeefyState) => state.ui.filteredVaults.platformId;
 
 export const selectFilterBoolean = createCachedSelector(
@@ -57,12 +57,13 @@ export const selectFilterBoolean = createCachedSelector(
 export const selectFilterPopinFilterCount = createSelector(
   selectFilterOptions,
   filterOptions =>
-    (filterOptions.onlyRetired ? 1 : 0) +
-    (filterOptions.onlyPaused ? 1 : 0) +
-    (filterOptions.onlyBoosted ? 1 : 0) +
+    (filterOptions.onlyCorrelated ? 1 : 0) +
+    (filterOptions.onlySingle ? 1 : 0) +
+    (filterOptions.onlyStable ? 1 : 0) +
     (filterOptions.platformId !== null ? 1 : 0) +
-    (filterOptions.vaultType !== 'all' ? 1 : 0) +
-    (filterOptions.vaultCategory !== 'all' ? 1 : 0) +
+    (filterOptions.onlyStakeable ? 1 : 0) +
+    (filterOptions.onlyLps ? 1 : 0) +
+    (filterOptions.onlyStaked ? 1 : 0) +
     (filterOptions.sort !== 'default' ? 1 : 0) +
     filterOptions.chainIds.length
 );
@@ -70,12 +71,12 @@ export const selectFilterPopinFilterCount = createSelector(
 export const selectHasActiveFilter = createSelector(
   selectFilterOptions,
   filterOptions =>
-    filterOptions.vaultCategory !== 'all' ||
-    filterOptions.userCategory !== 'all' ||
-    filterOptions.vaultType !== 'all' ||
-    filterOptions.onlyRetired !== false ||
-    filterOptions.onlyPaused !== false ||
-    filterOptions.onlyBoosted !== false ||
+    filterOptions.onlySingle !== false ||
+    filterOptions.onlyCorrelated !== false ||
+    filterOptions.onlyLps !== false ||
+    filterOptions.onlyStable !== false ||
+    filterOptions.onlyStakeable !== false ||
+    filterOptions.onlyStaked !== false ||
     filterOptions.searchText !== '' ||
     filterOptions.platformId !== null ||
     filterOptions.sort !== 'default' ||
@@ -85,20 +86,21 @@ export const selectHasActiveFilter = createSelector(
 export const selectHasActiveFilterExcludingUserCategoryAndSort = createSelector(
   selectFilterOptions,
   filterOptions =>
-    filterOptions.vaultCategory !== 'all' ||
-    filterOptions.vaultType !== 'all' ||
-    filterOptions.onlyRetired !== false ||
-    filterOptions.onlyPaused !== false ||
-    filterOptions.onlyBoosted !== false ||
+    filterOptions.onlySingle !== false ||
+    filterOptions.onlyCorrelated !== false ||
+    filterOptions.onlyLps !== false ||
+    filterOptions.onlyStable !== false ||
+    filterOptions.onlyStakeable !== false ||
+    filterOptions.onlyStaked !== false ||
     filterOptions.searchText !== '' ||
     filterOptions.platformId !== null ||
     filterOptions.chainIds.length > 0
 );
 
-export const selectVaultCategory = createSelector(
-  selectFilterOptions,
-  filterOptions => filterOptions.vaultCategory
-);
+// export const selectVaultCategory = createSelector(
+//   selectFilterOptions,
+//   filterOptions => filterOptions.vaultCategory
+// );
 
 function simplifySearchText(text: string) {
   return (text || '').replace(/-/g, ' ').trim();
@@ -191,8 +193,8 @@ const selectPlatformIdForFilter = createCachedSelector(
 // todo: use createSelector or put the result in the state to avoid re-computing these on every render
 // https://dev.to/nioufe/you-should-not-use-lodash-for-memoization-3441
 export const selectFilteredVaults = (state: BeefyState) => {
+  
   const filterOptions = selectFilterOptions(state);
-  console.log(state)
   const vaults = state.entities.vaults.allIds.map(id => selectVaultById(state, id));
   const tvlByVaultId = state.biz.tvl.byVaultId;
   const apyByVaultId = state.biz.apy.totalApy.byVaultId;
@@ -200,16 +202,10 @@ export const selectFilteredVaults = (state: BeefyState) => {
   // apply filtering
   const chainIdMap = createIdMap(filterOptions.chainIds);
   const filteredVaults = vaults.filter(vault => {
-    if (filterOptions.vaultCategory === 'featured' && !selectIsVaultFeatured(state, vault.id)) {
+    if (filterOptions.onlyCorrelated && !selectIsVaultCorrelated(state, vault.id)) {
       return false;
     }
-    if (filterOptions.vaultCategory === 'bluechip' && !selectIsVaultBlueChip(state, vault.id)) {
-      return false;
-    }
-    if (filterOptions.vaultCategory === 'stable' && !selectIsVaultStable(state, vault.id)) {
-      return false;
-    }
-    if (filterOptions.vaultCategory === 'beefy' && !selectIsVaultBeefy(state, vault.id)) {
+    if (filterOptions.onlyStable && !selectIsVaultStable(state, vault.id)) {
       return false;
     }
 
@@ -223,44 +219,39 @@ export const selectFilteredVaults = (state: BeefyState) => {
       return false;
     }
 
-    if (filterOptions.onlyRetired && !isVaultRetired(vault)) {
-      return false;
-    }
+    // if (filterOptions.onlyRetired && !isVaultRetired(vault)) {
+    //   return false;
+    // }
 
-    if (filterOptions.onlyPaused && !isVaultPaused(vault)) {
-      return false;
-    }
+    // if (filterOptions.onlyPaused && !isVaultPaused(vault)) {
+    //   return false;
+    // }
 
-    if (
-      !filterOptions.onlyRetired &&
-      isVaultRetired(vault) &&
-      filterOptions.userCategory !== 'deposited'
-    ) {
+    // if (
+    //   !filterOptions.onlyRetired &&
+    //   isVaultRetired(vault) &&
+    //   filterOptions.userCategory !== 'deposited'
+    // ) {
+    //   return false;
+    // }
+    // if (filterOptions.onlyBoosted && !selectIsVaultPreStakedOrBoosted(state, vault.id)) {
+    //   return false;
+    // }
+    // console.log(vault.type);
+    
+    if (filterOptions.onlySingle && vault.type !== 'single') {
       return false;
     }
-    if (filterOptions.onlyBoosted && !selectIsVaultPreStakedOrBoosted(state, vault.id)) {
-      return false;
-    }
-
-    if (filterOptions.vaultType === 'lps' && vault.type !== 'lps') {
-      return false;
-    }
-    if (filterOptions.vaultType === 'single' && vault.type !== 'single') {
+    if (filterOptions.onlyLps && vault.type !== 'lps') {
       return false;
     }
 
     // hide when no wallet balance of deposit token
-    if (
-      filterOptions.userCategory === 'eligible' &&
-      !selectIsUserEligibleForVault(state, vault.id)
-    ) {
+    if (filterOptions.onlyStakeable && !selectIsUserStakeableForVault(state, vault.id)) {
       return false;
     }
 
-    if (
-      filterOptions.userCategory === 'deposited' &&
-      !selectHasUserDepositInVault(state, vault.id)
-    ) {
+    if (filterOptions.onlyStaked && !selectHasUserStakedVault(state, vault.id)) {
       return false;
     }
 
@@ -285,27 +276,27 @@ export const selectFilteredVaults = (state: BeefyState) => {
       ])
     );
 
-    if (filterOptions.userCategory === 'deposited') {
-      // Surface retired, paused and boosted
-      sortedVaults = sortBy(sortedVaults, vault =>
-        vault.status === 'eol'
-          ? -3
-          : vault.status === 'paused'
-          ? -2
-          : vaultIsBoosted[vault.id]
-          ? -1
-          : 1
-      );
-    } else {
-      // Surface boosted
-      sortedVaults = sortBy(sortedVaults, vault =>
-        vaultIsBoosted[vault.id]
-          ? selectIsVaultPrestakedBoost(state, vault.id)
-            ? -Number.MAX_SAFE_INTEGER
-            : -selectVaultsActiveBoostPeriodFinish(state, vault.id)
-          : 1
-      );
-    }
+    // if (filterOptions.onlyStaked) {
+    //   // Surface retired, paused and boosted
+    //   sortedVaults = sortBy(sortedVaults, vault =>
+    //     vault.status === 'eol'
+    //       ? -3
+    //       : vault.status === 'paused'
+    //       ? -2
+    //       : vaultIsBoosted[vault.id]
+    //       ? -1
+    //       : 1
+    //   );
+    // } else {
+    //   // Surface boosted
+    //   sortedVaults = sortBy(sortedVaults, vault =>
+    //     vaultIsBoosted[vault.id]
+    //       ? selectIsVaultPrestakedBoost(state, vault.id)
+    //         ? -Number.MAX_SAFE_INTEGER
+    //         : -selectVaultsActiveBoostPeriodFinish(state, vault.id)
+    //       : 1
+    //   );
+    // }
   }
 
   const sortDirMul = filterOptions.sortDirection === 'desc' ? -1 : 1;
