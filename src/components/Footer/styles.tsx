@@ -13,12 +13,21 @@ export const styles = (theme: Theme) => ({
   wrapperTop: {
     marginBottom: 'auto',
   },
-  footer: {
-    background: theme.palette.background.footer,
-    padding: `${theme.spacing(5)}px`,
+  // container: {
+  //   display: 'flex',
+  // },
+  footerlogo: {
     display: 'flex',
     flexDirection: 'column' as const,
-    alignItems: 'center',
+    alignItems: 'end',
+  },
+  footer: {
+    background: theme.palette.background.footer,
+    padding: '20px 140px',
+    // padding: `${theme.spacing(5)}px`,
+    display: 'flex',
+    flexWrap: 'wrap' as const,
+    justifyContent: 'space-between',
   },
   userOnDashboard: {
     backgroundColor: theme.palette.background.alternativeFooterHeader,
@@ -27,7 +36,7 @@ export const styles = (theme: Theme) => ({
     display: 'flex',
     flexDirection: 'row' as const,
     flexWrap: 'wrap' as const,
-    justifyContent: 'center',
+    justifyContent: 'start',
     padding: '0',
     margin: `0 ${theme.spacing(3) / -2}px ${theme.spacing(3) / -2}px ${theme.spacing(3) / -2}px`,
     listStyle: 'none',

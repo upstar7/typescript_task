@@ -1,21 +1,21 @@
-import { memo, PropsWithChildren, useCallback } from 'react';
+import { memo, PropsWithChildren } from 'react';
 import { makeStyles } from '@material-ui/core';
-import { useAppDispatch, useAppSelector } from '../../../../../../store';
-import {
-  // selectFilterUserCategory,
-  selectHasActiveFilterExcludingUserCategoryAndSort,
-} from '../../../../../data/selectors/filtered-vaults';
 import { styles } from './styles';
-import {
-  selectIsWalletKnown,
-  selectWalletAddressIfKnown,
-} from '../../../../../data/selectors/wallet';
 import { useTranslation } from 'react-i18next';
-import { selectIsUserBalanceAvailable } from '../../../../../data/selectors/data-loader';
-import { Loader } from '../../../../../../components/Loader';
-import { askForWalletConnection, doDisconnectWallet } from '../../../../../data/actions/wallet';
-import { Button } from '../../../../../../components/Button';
-import { filteredVaultsActions } from '../../../../../data/reducers/filtered-vaults';
+// import { useAppDispatch, useAppSelector } from '../../../../../../store';
+// import {
+//   // selectFilterUserCategory,
+//   selectHasActiveFilterExcludingUserCategoryAndSort,
+// } from '../../../../../data/selectors/filtered-vaults';
+// import {
+//   selectIsWalletKnown,
+//   selectWalletAddressIfKnown,
+// } from '../../../../../data/selectors/wallet';
+// import { selectIsUserBalanceAvailable } from '../../../../../data/selectors/data-loader';
+// import { Loader } from '../../../../../../components/Loader';
+// import { askForWalletConnection, doDisconnectWallet } from '../../../../../data/actions/wallet';
+// import { Button } from '../../../../../../components/Button';
+// import { filteredVaultsActions } from '../../../../../data/reducers/filtered-vaults';
 
 const useStyles = makeStyles(styles);
 
@@ -37,57 +37,57 @@ const Message = memo<MessageProps>(function ({ title, text, children }) {
   );
 });
 
-const NotConnectedMessage = memo<MessageProps>(function ({ title, text }) {
-  const { t } = useTranslation();
-  const dispatch = useAppDispatch();
-  const walletAddress = useAppSelector(selectWalletAddressIfKnown);
-  const handleWalletConnect = useCallback(() => {
-    if (walletAddress) {
-      dispatch(doDisconnectWallet());
-    } else {
-      dispatch(askForWalletConnection());
-    }
-  }, [dispatch, walletAddress]);
+// const NotConnectedMessage = memo<MessageProps>(function ({ title, text }) {
+//   const { t } = useTranslation();
+//   const dispatch = useAppDispatch();
+//   const walletAddress = useAppSelector(selectWalletAddressIfKnown);
+//   const handleWalletConnect = useCallback(() => {
+//     if (walletAddress) {
+//       dispatch(doDisconnectWallet());
+//     } else {
+//       dispatch(askForWalletConnection());
+//     }
+//   }, [dispatch, walletAddress]);
 
-  return (
-    <Message title={title} text={text}>
-      <Button onClick={handleWalletConnect} variant="success">
-        {t('NoResults-ConnectWallet')}
-      </Button>
-    </Message>
-  );
-});
+//   return (
+//     <Message title={title} text={text}>
+//       <Button onClick={handleWalletConnect} variant="success">
+//         {t('NoResults-ConnectWallet')}
+//       </Button>
+//     </Message>
+//   );
+// });
 
-const NotDepositedMessage = memo<MessageProps>(function ({ title, text }) {
-  const { t } = useTranslation();
-  const dispatch = useAppDispatch();
-  const handleViewAll = useCallback(() => {
-    // dispatch(filteredVaultsActions.setUserCategory('all'));
-  }, [dispatch]);
+// const NotDepositedMessage = memo<MessageProps>(function ({ title, text }) {
+//   const { t } = useTranslation();
+//   const dispatch = useAppDispatch();
+//   const handleViewAll = useCallback(() => {
+//     // dispatch(filteredVaultsActions.setUserCategory('all'));
+//   }, [dispatch]);
 
-  return (
-    <Message title={title} text={text}>
-      <Button onClick={handleViewAll} variant="success">
-        {t('NoResults-ViewAllVaults')}
-      </Button>
-    </Message>
-  );
-});
+//   return (
+//     <Message title={title} text={text}>
+//       <Button onClick={handleViewAll} variant="success">
+//         {t('NoResults-ViewAllVaults')}
+//       </Button>
+//     </Message>
+//   );
+// });
 
-const LoadingMessage = memo(function () {
-  const classes = useStyles();
-  return (
-    <div className={classes.message}>
-      <Loader />
-    </div>
-  );
-});
+// const LoadingMessage = memo(function () {
+//   const classes = useStyles();
+//   return (
+//     <div className={classes.message}>
+//       <Loader />
+//     </div>
+//   );
+// });
 
 export const NoResults = memo(function () {
-  const hasActiveFilter = useAppSelector(selectHasActiveFilterExcludingUserCategoryAndSort);
+  // const hasActiveFilter = useAppSelector(selectHasActiveFilterExcludingUserCategoryAndSort);
   // const userCategory = useAppSelector(selectFilterUserCategory);
-  const userBalanceAvailable = useAppSelector(selectIsUserBalanceAvailable);
-  const isWalletKnown = useAppSelector(selectIsWalletKnown);
+  // const userBalanceAvailable = useAppSelector(selectIsUserBalanceAvailable);
+  // const isWalletKnown = useAppSelector(selectIsWalletKnown);
 
   // if (!isWalletKnown && (userCategory === 'eligible' || userCategory === 'deposited')) {
   //   return (

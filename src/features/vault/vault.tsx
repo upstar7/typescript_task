@@ -9,7 +9,6 @@ import { SafetyCard } from './components/SafetyCard';
 import { Graph } from './components/Graph';
 import { VaultsStats } from './components/VaultsStats';
 import { APYBreakdown } from './components/APYBreakdown';
-import { BoostCard } from './components/BoostCard';
 import { GovDetailsCard } from './components/GovDetailsCard';
 import {
   selectVaultById,

@@ -2,8 +2,6 @@ import React, { ReactNode } from 'react';
 import { Box, makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
 import { styles } from './styles';
-import { popoverInLinkHack__popoverContainerHandler } from '../../helpers/list-popover-in-link-hack';
-import { Popover } from '../Popover';
 import { ContentLoading } from '../ContentLoading';
 
 const useStyles = makeStyles(styles);

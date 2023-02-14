@@ -1,5 +1,4 @@
 import { memo } from 'react';
-import { LabeledStat } from '../LabeledStat';
 import { useTranslation } from 'react-i18next';
 import { formattedTotalApy } from '../../helpers/format';
 import { selectVaultById } from '../../features/data/selectors/vaults';
@@ -187,7 +186,7 @@ function _YearlyApyStats({ vaultId }: { vaultId: VaultEntity['id'] }) {
       divide
       label={isGovVault(vault) ? t('APR') : t('APY')}
       textContent={false}
-      value={isBoosted && shouldShowApy ? formatted.boostedTotalApy : null}
+      value={isBoosted && shouldShowApy ? formatted.boostedTotalApy : '-'}
       tooltip={
         shouldShowApy
           ? {
@@ -229,7 +228,7 @@ function _DailyApyStats({ vaultId }: { vaultId: VaultEntity['id'] }) {
       borderRight={true}
       label={t('Vault-Daily')}
       textContent={false}
-      value={isBoosted && shouldShowApy ? formatted.boostedTotalDaily : null}
+      value={isBoosted && shouldShowApy ? formatted.boostedTotalDaily : '-'}
       tooltip={
         shouldShowApy
           ? {

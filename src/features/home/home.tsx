@@ -10,12 +10,10 @@ import { useAppSelector } from '../../store';
 import { RenBannerHome } from '../../components/Banners/RenBanner';
 
 import { CheckboxFilterGroup } from './components/Filters/components/CheckboxFilterGroup';
-import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles(styles);
 
 export const Home = memo(function Home() {
-  const { t } = useTranslation();
   const classes = useStyles();
   const isVaultListAvailable = useAppSelector(selectIsVaultListAvailable);
 

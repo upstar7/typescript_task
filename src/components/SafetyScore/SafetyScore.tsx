@@ -23,7 +23,7 @@ export const SafetyScore = memo<SafetyScoreProps>(function SafetyScore({
   className,
 }) {
   const classes = useStyles();
-  const scoreText = score === 0 ? '-' : score.toFixed(1);
+  // const scoreText = score === 0 ? '-' : score.toFixed(1);
 
   return (
     <div

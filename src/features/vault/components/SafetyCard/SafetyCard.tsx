@@ -13,7 +13,6 @@ import down from './down.svg';
 import { selectVaultById } from '../../../data/selectors/vaults';
 import { VaultEntity } from '../../../data/entities/vault';
 import { useAppSelector } from '../../../../store';
-import { Collapsable } from '../../../../components/Collapsable';
 
 const useStyles = makeStyles(styles);
 

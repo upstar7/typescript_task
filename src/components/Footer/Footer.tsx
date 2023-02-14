@@ -1,12 +1,12 @@
 import React, { memo } from 'react';
 import { makeStyles } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 import { styles } from './styles';
 import { useTranslation } from 'react-i18next';
-import { ReactComponent as IconGithub } from '../../images/socials/github.svg';
+import { ReactComponent as IconInstagram } from '../../images/socials/instagram.svg';
 import { ReactComponent as IconTelegram } from '../../images/socials/telegram.svg';
-import { ReactComponent as IconDiscord } from '../../images/socials/discord.svg';
+import { ReactComponent as IconYoutube } from '../../images/socials/youtube.svg';
 import { ReactComponent as IconTwitter } from '../../images/socials/twitter.svg';
-import { ReactComponent as IconReddit } from '../../images/socials/reddit.svg';
 import clsx from 'clsx';
 import { useLocation } from 'react-router';
 
@@ -36,29 +36,25 @@ const navLinks = [
 
 const socialLinks = [
   {
-    title: 'GitHub',
-    path: 'https://github.com/beefyfinance',
-    Icon: IconGithub,
+    title: 'Instagram',
+    path: 'https://instagram.com',
+    Icon: IconInstagram,
   },
   {
     title: 'Telegram',
     path: 'https://t.me/beefyfinance',
     Icon: IconTelegram,
   },
-  {
-    title: 'Discord',
-    path: 'https://discord.gg/yq8wfHd',
-    Icon: IconDiscord,
-  },
+
   {
     title: 'Twitter',
     path: 'https://twitter.com/beefyfinance',
     Icon: IconTwitter,
   },
   {
-    title: 'Reddit',
-    path: 'https://www.reddit.com/r/Beefy/',
-    Icon: IconReddit,
+    title: 'Youtube',
+    path: 'https://youtube.com/beefyfinance',
+    Icon: IconYoutube,
   },
 ];
 
@@ -75,30 +71,38 @@ export const Footer = memo(function () {
 
   return (
     <div className={clsx(classes.footer, { [classes.userOnDashboard]: isOnDashboard })}>
-      <ul className={classes.nav}>
-        {navLinks.map(({ title, path }) => (
-          <li key={path} className={classes.navItem}>
-            <a href={path} target="_blank" rel="noopener" className={classes.navLink}>
-              {t(title)}
-            </a>
-          </li>
-        ))}
-      </ul>
-      <ul className={classes.nav}>
-        {socialLinks.map(({ title, path, Icon }) => (
-          <li key={path} className={classes.navItem}>
-            <a
-              href={path}
-              target="_blank"
-              rel="noopener"
-              className={classes.navLink}
-              title={t(title)}
-            >
-              <Icon />
-            </a>
-          </li>
-        ))}
-      </ul>
+      <div>
+        <ul className={classes.nav}>
+          {navLinks.map(({ title, path }) => (
+            <li key={path} className={classes.navItem}>
+              <a href={path} target="_blank" rel="noopener" className={classes.navLink}>
+                {t(title)}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <ul className={classes.nav}>
+          {socialLinks.map(({ title, path, Icon }) => (
+            <li key={path} className={classes.navItem}>
+              <a
+                href={path}
+                target="_blank"
+                rel="noopener"
+                className={classes.navLink}
+                title={t(title)}
+              >
+                <Icon />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className={classes.footerlogo}>
+        <Link to="/">
+          <img alt="Cross FARM" src={require(`../../images/bifi-logos/footer-logo.png`).default} />
+        </Link>
+        <div>Copyright © 2022 - Cross.Farm</div>
+      </div>
     </div>
   );
 });

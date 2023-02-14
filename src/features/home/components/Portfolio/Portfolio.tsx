@@ -1,8 +1,8 @@
 import { makeStyles } from '@material-ui/core';
-import { useTranslation } from 'react-i18next';
 import { UserStats } from './UserStats';
 import { VaultsStats } from './VaultsStats';
 import { styles } from './styles';
+// import { useTranslation } from 'react-i18next';
 // import VisibilityOffOutlinedIcon from '@material-ui/icons/VisibilityOffOutlined';
 // import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined';
 // import { useTheme } from '@material-ui/core/styles';
@@ -22,7 +22,6 @@ export const Portfolio = () => {
   //   dispatch(setToggleHideBalance());
   // };
 
-  const { t } = useTranslation();
 
   return (
     <div>

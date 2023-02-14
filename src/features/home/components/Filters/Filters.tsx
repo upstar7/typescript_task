@@ -4,12 +4,8 @@ import { ChainButtonFilter, ChainDropdownFilter } from './components/ChainFilter
 // import { CheckboxFilter, CheckboxFilterProps } from './components/CheckboxFilter';
 
 import { styles } from './styles';
-import { ExtendedFiltersButton } from './components/ExtendedFilters';
-import { ClearFiltersButton } from './components/ClearFiltersButton';
-import clsx from 'clsx';
 
 import { Theme } from '@material-ui/core/styles';
-import { CheckboxFilter } from './components/CheckboxFilter';
 
 const useStyles = makeStyles(styles);
 

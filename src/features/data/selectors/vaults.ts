@@ -9,11 +9,15 @@ import {
   VaultEntity,
   VaultGov,
 } from '../entities/vault';
-import { selectIsBeefyToken, selectIsTokenBluechip, selectIsTokenStable } from './tokens';
+import { selectIsTokenStable } from './tokens';
+
 import { createCachedSelector } from 're-reselect';
 import { BIG_ONE } from '../../../helpers/big-number';
-import { differenceWith, first, isEqual } from 'lodash';
-import { selectChainById } from './chains';
+import { first } from 'lodash';
+// import { differenceWith, first, isEqual } from 'lodash';
+// import { selectIsBeefyToken, selectIsTokenBluechip, selectIsTokenStable } from './tokens';
+// import { selectChainById } from './chains';
+
 
 export const selectVaultById = createCachedSelector(
   (state: BeefyState) => state.entities.vaults.byId,

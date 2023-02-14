@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Divider, Grid, makeStyles } from '@material-ui/core';
+import { Box, Grid, makeStyles } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import { styles } from './styles';
 import { isGovVault, VaultEntity } from '../../../data/entities/vault';

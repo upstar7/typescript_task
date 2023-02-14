@@ -16,10 +16,8 @@ import {
 } from './balance';
 import {
   selectBoostById,
-  selectIsVaultPrestakedBoost,
   selectIsVaultPreStakedOrBoosted,
   selectPreStakeOrActiveBoostIds,
-  selectVaultsActiveBoostPeriodFinish,
 } from './boosts';
 import {
   // selectIsVaultBeefy,
@@ -193,7 +191,6 @@ const selectPlatformIdForFilter = createCachedSelector(
 // todo: use createSelector or put the result in the state to avoid re-computing these on every render
 // https://dev.to/nioufe/you-should-not-use-lodash-for-memoization-3441
 export const selectFilteredVaults = (state: BeefyState) => {
-  
   const filterOptions = selectFilterOptions(state);
   const vaults = state.entities.vaults.allIds.map(id => selectVaultById(state, id));
   const tvlByVaultId = state.biz.tvl.byVaultId;
@@ -238,7 +235,7 @@ export const selectFilteredVaults = (state: BeefyState) => {
     //   return false;
     // }
     // console.log(vault.type);
-    
+
     if (filterOptions.onlySingle && vault.type !== 'single') {
       return false;
     }
@@ -269,12 +266,12 @@ export const selectFilteredVaults = (state: BeefyState) => {
 
   // Vaults are already presorted by date on the reducer
   if (filterOptions.sort === 'default') {
-    const vaultIsBoosted = Object.fromEntries(
-      sortedVaults.map(vault => [
-        vault.id,
-        selectIsVaultPreStakedOrBoosted(state, vault.id) && vault.platformId !== 'valleyswap',
-      ])
-    );
+    // const vaultIsBoosted = Object.fromEntries(
+    //   sortedVaults.map(vault => [
+    //     vault.id,
+    //     selectIsVaultPreStakedOrBoosted(state, vault.id) && vault.platformId !== 'valleyswap',
+    //   ])
+    // );
 
     // if (filterOptions.onlyStaked) {
     //   // Surface retired, paused and boosted

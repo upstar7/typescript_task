@@ -120,24 +120,14 @@ function GraphComponent({ vaultId }: { vaultId: VaultEntity['id'] }) {
               checkboxClass={classes.checkbox}
               checked={showAverages.simpleAverage}
               onChange={e => handleShowAverages(e, 'simpleAverage')}
-              label={
-                <>
-                  <Box className={classes.averageLine} />
-                  {t('Average')}
-                </>
-              }
+              label={t('Average')}
             />
             <LabelledCheckbox
               labelClass={classes.label}
               checkboxClass={classes.checkbox}
               checked={showAverages.movingAverage}
               onChange={e => handleShowAverages(e, 'movingAverage')}
-              label={
-                <>
-                  <Box className={classes.movingAverageLine} />
-                  {t('Moving-Average')}
-                </>
-              }
+              label={t('Moving-Average')}
             />
           </Box>
           <BasicTabs
