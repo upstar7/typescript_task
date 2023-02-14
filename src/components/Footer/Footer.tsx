@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { makeStyles } from '@material-ui/core';
+import { Container, makeStyles } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { styles } from './styles';
 import { useTranslation } from 'react-i18next';
@@ -114,7 +114,11 @@ export const WrappedFooter = memo(function WrappedFooter({ children }) {
   return (
     <div className={classes.wrapper}>
       <div className={classes.wrapperTop}>{children}</div>
-      <Footer />
+      <div className={classes.footerDiv}>
+        <Container maxWidth="lg">
+          <Footer />
+        </Container>
+      </div>
     </div>
   );
 });

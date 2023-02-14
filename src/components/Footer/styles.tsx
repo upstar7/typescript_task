@@ -13,6 +13,9 @@ export const styles = (theme: Theme) => ({
   wrapperTop: {
     marginBottom: 'auto',
   },
+  footerDiv: {
+    backgroundColor: theme.palette.background.footer,
+  },
   // container: {
   //   display: 'flex',
   // },
@@ -23,7 +26,7 @@ export const styles = (theme: Theme) => ({
   },
   footer: {
     background: theme.palette.background.footer,
-    padding: '20px 140px',
+    padding: '20px 0px',
     // padding: `${theme.spacing(5)}px`,
     display: 'flex',
     flexWrap: 'wrap' as const,
