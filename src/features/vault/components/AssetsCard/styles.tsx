@@ -4,10 +4,12 @@ export const styles = (theme: Theme) => ({
   title: {
     ...theme.typography.h2,
     color: theme.palette.text.primary,
+    
     alignItems: 'center',
   },
   container: {
-    backgroundColor: '#161a32',
+    backgroundColor: theme.palette.background.default,
+    borderRadius: '16px',
     marginTop: 24,
   },
   cards: {

@@ -6,7 +6,7 @@ export const styles = (theme: Theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: '8px',
-    padding: '8px 26px',
+    padding: '10px 26px',
     // backgroundColor: '#d4c600',
   },
   address: {

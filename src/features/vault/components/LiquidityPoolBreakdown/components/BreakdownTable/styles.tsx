@@ -5,8 +5,7 @@ export const styles = (theme: Theme) => ({
     display: 'flex',
     flexDirection: 'column' as const,
     justifyContent: 'center',
-    backgroundImage:
-      'linear-gradient(to bottom, #2D3153 0%, #2D3153 50%, #363B63 50%, #363B63 100%)',
+    backgroundColor: theme.palette.background.default,
     borderBottomLeftRadius: '8px',
     borderBottomRightRadius: '8px',
     [theme.breakpoints.up('lg')]: {
@@ -14,12 +13,13 @@ export const styles = (theme: Theme) => ({
     },
   },
   cell: {
+    backgroundColor: theme.palette.background.default,
     whiteSpace: 'nowrap' as const,
     overflow: 'hidden',
     textOverflow: 'ellipsis',
   },
   row: {
-    backgroundColor: '#2D3153',
+    backgroundColor: theme.palette.background.default,
     display: 'grid',
     gridTemplateColumns: '35fr 35fr 30fr',
     padding: '16px 24px',
@@ -38,7 +38,7 @@ export const styles = (theme: Theme) => ({
     color: '#999CB3',
   },
   footer: {
-    backgroundColor: '#363B63',
+    backgroundColor: theme.palette.background.default, 
     borderBottomLeftRadius: '8px',
     borderBottomRightRadius: '8px',
     [theme.breakpoints.up('lg')]: {

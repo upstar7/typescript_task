@@ -70,7 +70,7 @@ function GraphComponent({ vaultId }: { vaultId: VaultEntity['id'] }) {
           </div>
         </div>
       </CardHeader>
-      <CardContent>
+      <CardContent className={classes.content}>
         <ResponsiveContainer height={250}>
           <AreaChart data={chartData} margin={{ top: 0, right: 0, bottom: 0, left: 0 }}>
             <CartesianGrid vertical={false} stroke="#484D73" />

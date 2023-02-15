@@ -2,10 +2,13 @@ import { Theme } from '@material-ui/core/styles';
 
 export const styles = (theme: Theme) => ({
   filters: {
+    backgroundColor: theme.palette.background.header,
     display: 'flex',
     flexWrap: 'wrap' as const,
     rowGap: '16px',
     columnGap: '16px',
+    padding: '20px 20px',
+    borderRadius: '10px',
   },
   userCategory: {
     width: '100%',

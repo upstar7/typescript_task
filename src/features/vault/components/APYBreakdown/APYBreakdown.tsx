@@ -35,7 +35,7 @@ function APYBreakdownCardComponent({ vaultId }: { vaultId: VaultEntity['id'] }) 
           <CardTitle title={t('Vault-ApyBreakdown')} />
         </div>
       </CardHeader>
-      <CardContent>
+      <CardContent className={classes.content}>
         {showApy ? (
           <div>
             <div className={classes.apysContainer}>

@@ -2,6 +2,7 @@ import { Theme } from '@material-ui/core/styles';
 
 export const styles = (theme: Theme) => ({
   container: {
+    
     paddingBottom: '50px',
   },
   header: {
@@ -11,6 +12,9 @@ export const styles = (theme: Theme) => ({
       flexDirection: 'column' as const,
       rowGap: '16px',
     },
+  },
+  content: {
+    backgroundColor: theme.palette.background.default,
   },
   cardActions: {
     display: 'flex',
@@ -25,6 +29,7 @@ export const styles = (theme: Theme) => ({
   },
   cardAction: {},
   text: {
+    
     margin: '0 0 32px 0',
     whiteSpace: 'pre-line' as const,
     color: theme.palette.text.secondary,

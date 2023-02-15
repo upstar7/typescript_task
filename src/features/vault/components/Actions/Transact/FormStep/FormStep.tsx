@@ -46,7 +46,7 @@ export const FormStep = memo(function () {
 
   return (
     <div className={classes.container}>
-      <CardsTabs selected={TransactMode[mode]} options={modeOptions} onChange={handleModeChange} />
+      <CardsTabs className={classes.tabs} selected={TransactMode[mode]} options={modeOptions} onChange={handleModeChange} />
       <Component />
     </div>
   );

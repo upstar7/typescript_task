@@ -4,6 +4,8 @@ export const styles = (theme: Theme) => ({
   input: {
     color: '#D0D0DA',
     background: '#161a32',
+    border: `2px solid ${theme.palette.background.light}`,
+
     borderRadius: '8px',
     width: '100%',
     display: 'flex',

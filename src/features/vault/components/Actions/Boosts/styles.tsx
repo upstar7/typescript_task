@@ -2,18 +2,12 @@ import { Theme } from '@material-ui/core/styles';
 
 export const styles = (theme: Theme) => ({
   container: {
-    padding: theme.spacing(3),
     backgroundColor: theme.palette.background.default,
-    borderRadius: '12px',
   },
   containerBoost: {
     marginTop: theme.spacing(3),
-    padding: theme.spacing(3),
     borderRadius: '12px',
     backgroundColor: theme.palette.background.default,
-    display: 'flex',
-    flexDirection: 'column' as const,
-    rowGap: '16px',
   },
   containerExpired: {
     display: 'flex',
@@ -29,6 +23,10 @@ export const styles = (theme: Theme) => ({
     height: 30,
     marginLeft: '-8px',
   },
+  header: {
+    background: '#161a32',
+  },
+
   title: {
     ...theme.typography['h2'],
     color: '#d4c600',
@@ -53,7 +51,8 @@ export const styles = (theme: Theme) => ({
     display: 'grid',
     gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
     columnGap: '16px',
-    backgroundColor: '#2D3153',
+    backgroundColor: theme.palette.background.default,
+
     padding: '12px',
     borderRadius: '8px',
   },
@@ -71,6 +70,7 @@ export const styles = (theme: Theme) => ({
     color: theme.palette.text.secondary,
   },
   button: {
+    margin: '20px 0',
     backgroundColor: theme.palette.background.vaults.defaultOutline,
     borderRadius: '8px',
   },

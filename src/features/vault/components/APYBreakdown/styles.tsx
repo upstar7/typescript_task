@@ -9,6 +9,9 @@ export const styles = (theme: Theme) => ({
       rowGap: '16px',
     },
   },
+  content: {
+    backgroundColor: theme.palette.background.default,
+  },
   cardActions: {
     display: 'flex',
     alignItems: 'center',

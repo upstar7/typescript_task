@@ -8,7 +8,6 @@ import { VaultWalletStat } from './VaultWalletStat';
 import { VaultYearlyStat } from './VaultYearlyStat';
 import { VaultDailyStat } from './VaultDailyStat';
 import { VaultTvlStat } from './VaultTvlStat';
-import { VaultSafetyStat } from './VaultSafetyStat';
 
 const useStyles = makeStyles(styles);
 
@@ -36,9 +35,9 @@ export const VaultStats = memo<VaultStatsProps>(function VaultStats({ vaultId })
         <div className={classes.column}>
           <VaultTvlStat vaultId={vaultId} />
         </div>
-        <div className={classes.column}>
+        {/* <div className={classes.column}>
           <VaultSafetyStat vaultId={vaultId} />
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -2,9 +2,8 @@ import { Theme } from '@material-ui/core/styles';
 
 export const styles = (theme: Theme) => ({
   rotateIcon: {
-    animation: '$spin 4s linear infinite',
-    height: '48px',
-    padding: '5px',
+    animation: '$spin 2s linear infinite',
+    height: '60px',
   },
   '@keyframes spin': {
     '0%': {

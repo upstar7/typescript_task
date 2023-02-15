@@ -10,6 +10,7 @@ export const styles = (theme: Theme) => ({
     minWidth: 0,
   },
   vaultNameTags: {
+    paddingTop: '10px',
     minWidth: 0, // needed for overflowing tags
   },
   vaultName: {

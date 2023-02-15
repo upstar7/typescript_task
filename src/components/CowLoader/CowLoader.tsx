@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, makeStyles } from '@material-ui/core';
 import { styles } from './styles';
-import BIFILogo from '../../images/bifi-logos/BIFI-COW.svg';
+import BIFILogo from '../../images/bifi-logos/loading-20.svg';
 
 const useStyles = makeStyles(styles);
 

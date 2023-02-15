@@ -1,6 +1,18 @@
 import { Theme } from '@material-ui/core/styles';
 
 export const styles = (theme: Theme) => ({
+  // header: {
+  //   background: '#161a32',
+  // },
+  // titleBox: {
+  //   display: 'flex',
+  //   flexDirection: 'column' as const,
+  //   alignItems: 'flex-start',
+  //   [theme.breakpoints.up('sm')]: {
+  //     flexDirection: 'row' as const,
+  //     alignItems: 'center',
+  //   },
+  // },
   text: {
     color: theme.palette.text.secondary,
     marginBottom: '24px',
@@ -14,12 +26,12 @@ export const styles = (theme: Theme) => ({
     },
   },
   header: {
+    backgroundColor: theme.palette.background.default,
     display: 'flex',
     flexWrap: 'wrap' as const,
     rowGap: '16px',
     padding: '24px',
     borderRadius: '12px 12px 0 0',
-    backgroundColor: theme.palette.background.default,
   },
   socials: {
     display: 'flex',

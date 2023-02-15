@@ -12,7 +12,7 @@ export const styles = (theme: Theme) => ({
   vaultTag: {
     ...theme.typography['subline-sm'],
     color: '#D0D0DA',
-    backgroundColor: '#4C5480',
+    backgroundColor: theme.palette.background.default,
     padding: '2px 8px',
     borderRadius: '4px',
     textTransform: 'uppercase' as const,
@@ -26,7 +26,7 @@ export const styles = (theme: Theme) => ({
     },
   },
   vaultTagBoost: {
-    backgroundColor: 'rgba(219, 131, 50, 0.3)',
+    backgroundColor: '#0c8085',
   },
   vaultTagRetired: {
     backgroundColor: 'rgba(209, 83, 71, 0.3)',

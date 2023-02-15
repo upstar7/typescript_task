@@ -22,6 +22,7 @@ import { selectIsWalletPending } from '../../../../features/data/selectors/data-
 import clsx from 'clsx';
 import { useAppDispatch } from '../../../../store';
 import { formatAddressShort, formatEns } from '../../../../helpers/format';
+import { WalletLoader } from '../../../WalletLoader/WalletLoader';
 
 const useStyles = makeStyles(styles);
 
@@ -59,7 +60,7 @@ export const WalletContainer = connect((state: BeefyState) => {
       if (walletAddress) {
         dispatch(doDisconnectWallet());
       } else {
-        console.log('222 1')
+        console.log('222 1');
         dispatch(askForWalletConnection());
       }
     };
@@ -88,12 +89,7 @@ export const WalletContainer = connect((state: BeefyState) => {
         <FormControl {...formControlProps}>
           <div>
             {walletPending ? (
-              <Box className={classes.loading}>
-                <StatLoader
-                  foregroundColor="{theme.palette.primary.light}"
-                  backgroundColor={theme.palette.primary.dark}
-                />
-              </Box>
+              <WalletLoader />
             ) : (
               <React.Fragment>
                 <div className={clsx(classes.address, { [classes.blurred]: blurred })}>

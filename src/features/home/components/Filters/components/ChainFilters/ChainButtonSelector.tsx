@@ -38,7 +38,7 @@ const ChainButton = memo<ChainButtonProps>(function ({ id, selected, onChange })
         onClick={handleChange}
         className={clsx(classes.button, { [classes.selected]: selected })}
       >
-        <Icon className={classes.icon} width={24} height={24} />
+        <Icon className={classes.icon} width={40} height={40} />
       </button>
     </Tooltip>
   );
@@ -56,6 +56,7 @@ export const ChainButtonSelector = memo<ChainButtonSelectorProps>(function Chain
 }) {
   const classes = useStyles();
   const chainIds = useAppSelector(selectAllChainIds);
+  
   const handleChange = useCallback(
     (isSelected, id) => {
       if (isSelected) {

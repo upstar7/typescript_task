@@ -5,7 +5,7 @@ export const styles = (theme: Theme) => ({
   //   backgroundColor: theme.palette.background.footer,
   // },
   portfolioContainer: {
-    backgroundColor: '#1b1e31',
+    backgroundColor: theme.palette.background.appBG,
     display: 'flex',
     flexWrap: 'wrap' as const,
     justifyContent: 'space-between',

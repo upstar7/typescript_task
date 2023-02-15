@@ -5,6 +5,9 @@ export const styles = (theme: Theme) => ({
     display: 'flex',
     backgroundColor: '#161a32',
   },
+  content: {
+    backgroundColor: theme.palette.background.default,
+  },
   riskList: {
     marginBottom: '32px',
   },

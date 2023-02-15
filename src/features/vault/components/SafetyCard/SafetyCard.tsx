@@ -27,7 +27,7 @@ function SafetyCardComponent({ vaultId }: { vaultId: VaultEntity['id'] }) {
         <div className={classes.safetyLabel}>{t('Safety-Score1')}</div>
         <SafetyScore score={vault.safetyScore} colorLabel={true} size="md" />
       </CardHeader>
-      <CardContent>
+      <CardContent className={classes.content}>
         <div className={classes.riskList}>
           {vault.risks.map(risk => (
             <Fragment key={risk}>

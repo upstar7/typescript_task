@@ -4,7 +4,7 @@ export const styles = (theme: Theme) => ({
   button: {
     padding: '8px 12px',
     margin: 0,
-    border: 'none',
+    border: `2px solid ${theme.palette.background.light}`,
     boxShadow: 'none',
     outline: 'none',
     background: '#161a32',

@@ -60,6 +60,9 @@ export const styles = (theme: Theme) => ({
   checkbox: {
     color: '#848BAD',
   },
+  content: {
+    backgroundColor: theme.palette.background.default,
+  },
   label: {
     ...theme.typography['subline-lg'],
   },

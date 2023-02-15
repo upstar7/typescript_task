@@ -3,7 +3,7 @@ import { Theme } from '@material-ui/core/styles';
 export const styles = (theme: Theme) => ({
   value: {
     ...theme.typography['body-lg-med'],
-    color: '#D0D0DA',
+    color: '#d2c601',
   },
   subValue: {
     ...theme.typography['body-sm'],

@@ -44,7 +44,7 @@ function StrategyCardComponent({ vaultId }: { vaultId: VaultEntity['id'] }) {
           </div>
         </div>
       </CardHeader>
-      <CardContent>
+      <CardContent className={classes.content}>
         <div className={classes.text}>
           <StrategyDescription vaultId={vaultId} />
         </div>

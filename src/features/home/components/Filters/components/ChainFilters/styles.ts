@@ -9,18 +9,17 @@ export const styles = (theme: Theme) => ({
     rowGap: theme.spacing(2),
   },
   icon: {
-    width: '24px',
-    height: '24px',
+    width: '40px',
+    height: '40px',
     display: 'block',
     margin: '0 auto',
   },
   button: {
-    background: 'transparent',
+    background: theme.palette.background.header,
     boxShadow: 'none',
     flexGrow: 1,
     flexShrink: 0,
-    padding: `${12 - 2}px 0`,
-    border: `solid 2px ${theme.palette.background.filters.outline}`,
+    border: `solid 2px ${theme.palette.background.header}`,
     borderRadius: '6px',
     cursor: 'pointer',
     '&:not($selected) $icon': {
@@ -33,7 +32,7 @@ export const styles = (theme: Theme) => ({
     },
   },
   selected: {
-    backgroundColor: theme.palette.background.filters.inactive,
+    backgroundColor: theme.palette.background.header,
   },
   tooltip: {
     ...theme.typography['body-lg-med'],

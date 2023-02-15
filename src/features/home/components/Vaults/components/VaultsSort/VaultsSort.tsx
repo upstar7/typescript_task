@@ -27,7 +27,7 @@ const SORT_COLUMNS: {
   { label: 'Filter-SortApy', sortKey: 'apy' },
   { label: 'Filter-SortDaily', sortKey: 'daily' },
   { label: 'Filter-SortTvl', sortKey: 'tvl' },
-  { label: 'Filter-SortSafety', sortKey: 'safetyScore' },
+  // { label: 'Filter-SortSafety', sortKey: 'safetyScore' },
 ];
 
 const SortColumns = memo(function SortColumns() {

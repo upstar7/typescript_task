@@ -186,7 +186,7 @@ function _YearlyApyStats({ vaultId }: { vaultId: VaultEntity['id'] }) {
       divide
       label={isGovVault(vault) ? t('APR') : t('APY')}
       textContent={false}
-      value={isBoosted && shouldShowApy ? formatted.boostedTotalApy : '-'}
+      value={shouldShowApy ? formatted.totalApy : '-'}
       tooltip={
         shouldShowApy
           ? {
@@ -222,13 +222,14 @@ function _DailyApyStats({ vaultId }: { vaultId: VaultEntity['id'] }) {
   const values = useAppSelector(state => selectVaultTotalApy(state, vaultId));
 
   const formatted = formattedTotalApy(values);
+  console.log(formatted);
 
   return (
     <ValueBlock
       borderRight={true}
       label={t('Vault-Daily')}
       textContent={false}
-      value={isBoosted && shouldShowApy ? formatted.boostedTotalDaily : '-'}
+      value={shouldShowApy ? formatted.vaultDaily : '-'}
       tooltip={
         shouldShowApy
           ? {

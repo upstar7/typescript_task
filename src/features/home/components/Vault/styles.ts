@@ -5,8 +5,7 @@ export const styles = (theme: Theme) => ({
     display: 'block',
     position: 'relative' as const,
     color: '#9595B2',
-    background: theme.palette.background.vaults.default,
-    borderBottom: 'solid 2px #363B63',
+    background: theme.palette.background.light,
     padding: '24px',
     textDecoration: 'none',
     '&:last-child': {
@@ -15,9 +14,12 @@ export const styles = (theme: Theme) => ({
       borderBottomRightRadius: '8px',
       backgroundClip: 'padding-box',
     },
+    "&:nth-child(even)": {
+      backgroundColor: theme.palette.background.default,
+    }
   },
   vaultRetired: {
-    backgroundColor: '#1B1E31',
+    backgroundColor: '#1B1E31!important',
   },
   vaultEarnings: {
     backgroundColor: '#322460',

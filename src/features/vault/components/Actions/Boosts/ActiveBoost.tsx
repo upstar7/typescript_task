@@ -9,6 +9,8 @@ import { selectCurrentChainId, selectIsWalletConnected } from '../../../../data/
 import { selectBoostById, selectBoostContractState } from '../../../../data/selectors/boosts';
 import { walletActions } from '../../../../data/actions/wallet-actions';
 import { BoostEntity } from '../../../../data/entities/boost';
+import { Card, CardContent, CardHeader } from '../../Card';
+
 import {
   selectBoostRewardsTokenEntity,
   selectBoostUserBalanceInToken,
@@ -127,102 +129,110 @@ export function ActiveBoost({ boostId, title }: { boostId: BoostEntity['id']; ti
 
   return (
     <div className={classes.containerBoost}>
-      <div className={classes.title}>
-        <span>
-          <Trans
-            t={t}
-            i18nKey="Boost-Title"
-            values={{ title }}
-            components={{ white: <span className={classes.titleWhite} /> }}
-          />
-        </span>
-        <IconWithBasicTooltip
-          title={t('Boost-WhatIs')}
-          content={t('Boost-Explain')}
-          triggerClass={classes.titleTooltipTrigger}
-        />
-      </div>
-      <div className={classes.boostStats}>
-        <div className={classes.boostStat}>
-          <div className={classes.boostStatLabel}>{t('Boost-Rewards')}</div>
-          <div className={classes.boostStatValue}>
-            {formatBigDecimals(boostPendingRewards, 8)} {rewardToken.symbol}
-          </div>
-        </div>
-        {!isPreStake ? (
-          <div className={classes.boostStat}>
-            <div className={classes.boostStatLabel}>{t('Boost-Ends')}</div>
-            <div className={classes.boostStatValue}>
-              <StakeCountdown periodFinish={periodFinish} />
-            </div>
-          </div>
-        ) : (
-          <></>
-        )}
-      </div>
-      {isWalletConnected ? (
-        !isWalletOnVaultChain ? (
-          <Button
-            onClick={() => dispatch(askForNetworkChange({ chainId: vault.chainId }))}
-            className={classes.button}
-            fullWidth={true}
-            borderless={true}
-            disabled={isStepping}
-          >
-            {t('Network-Change', { network: chain.name })}
-          </Button>
-        ) : (
-          <>
-            <BoostActionButton
-              boostId={boostId}
-              type="stake"
-              open={collapseOpen.stake}
-              handleCollapse={() => handleCollapse({ stakeUnstake: 'stake' })}
-              balance={mooTokenBalance}
+      <Card>
+        <CardHeader className={classes.header}>
+          <div className={classes.title}>
+            <span>
+              <Trans
+                t={t}
+                i18nKey="Boost-Title"
+                values={{ title }}
+                components={{ white: <span className={classes.titleWhite} /> }}
+              />
+            </span>
+            <IconWithBasicTooltip
+              title={t('Boost-WhatIs')}
+              content={t('Boost-Explain')}
+              triggerClass={classes.titleTooltipTrigger}
             />
-            {boostBalance.gt(0) && (
+          </div>
+        </CardHeader>
+        <CardContent className={classes.container}>
+          <div className={classes.boostStats}>
+            <div className={classes.boostStat}>
+              <div className={classes.boostStatLabel}>{t('Boost-Rewards')}</div>
+              <div className={classes.boostStatValue}>
+                {formatBigDecimals(boostPendingRewards, 8)} {rewardToken.symbol}
+              </div>
+            </div>
+            {!isPreStake ? (
+              <div className={classes.boostStat}>
+                <div className={classes.boostStatLabel}>{t('Boost-Ends')}</div>
+                <div className={classes.boostStatValue}>
+                  <StakeCountdown periodFinish={periodFinish} />
+                </div>
+              </div>
+            ) : (
+              <></>
+            )}
+          </div>
+          {isWalletConnected ? (
+            !isWalletOnVaultChain ? (
+              <Button
+                onClick={() => dispatch(askForNetworkChange({ chainId: vault.chainId }))}
+                className={classes.button}
+                fullWidth={true}
+                borderless={true}
+                disabled={isStepping}
+              >
+                {t('Network-Change', { network: chain.name })}
+              </Button>
+            ) : (
               <>
                 <BoostActionButton
                   boostId={boostId}
-                  type="unstake"
-                  open={collapseOpen.unstake}
-                  handleCollapse={() => handleCollapse({ stakeUnstake: 'unstake' })}
-                  balance={boostBalance}
+                  type="stake"
+                  open={collapseOpen.stake}
+                  handleCollapse={() => handleCollapse({ stakeUnstake: 'stake' })}
+                  balance={mooTokenBalance}
                 />
-                <Button
-                  disabled={isStepping || boostPendingRewards.isZero()}
-                  className={classes.button}
-                  onClick={handleClaim}
-                  fullWidth={true}
-                  borderless={true}
-                >
-                  {t('Boost-Button-Withdraw')}
-                </Button>
-                <Button
-                  disabled={isStepping || (boostBalance.isZero() && boostPendingRewards.isZero())}
-                  className={classes.button}
-                  onClick={() => handleExit(boost)}
-                  fullWidth={true}
-                  borderless={true}
-                >
-                  {t('Boost-Button-Claim-Unstake')}
-                </Button>
+                {boostBalance.gt(0) && (
+                  <>
+                    <BoostActionButton
+                      boostId={boostId}
+                      type="unstake"
+                      open={collapseOpen.unstake}
+                      handleCollapse={() => handleCollapse({ stakeUnstake: 'unstake' })}
+                      balance={boostBalance}
+                    />
+                    <Button
+                      disabled={isStepping || boostPendingRewards.isZero()}
+                      className={classes.button}
+                      onClick={handleClaim}
+                      fullWidth={true}
+                      borderless={true}
+                    >
+                      {t('Boost-Button-Withdraw')}
+                    </Button>
+                    <Button
+                      disabled={
+                        isStepping || (boostBalance.isZero() && boostPendingRewards.isZero())
+                      }
+                      className={classes.button}
+                      onClick={() => handleExit(boost)}
+                      fullWidth={true}
+                      borderless={true}
+                    >
+                      {t('Boost-Button-Claim-Unstake')}
+                    </Button>
+                  </>
+                )}
               </>
-            )}
-          </>
-        )
-      ) : (
-        <Button
-          className={classes.button}
-          fullWidth={true}
-          borderless={true}
-          variant="success"
-          onClick={() => dispatch(askForWalletConnection())}
-          disabled={isStepping}
-        >
-          {t('Network-ConnectWallet')}
-        </Button>
-      )}
+            )
+          ) : (
+            <Button
+              className={classes.button}
+              fullWidth={true}
+              borderless={true}
+              variant="success"
+              onClick={() => dispatch(askForWalletConnection())}
+              disabled={isStepping}
+            >
+              {t('Network-ConnectWallet')}
+            </Button>
+          )}
+        </CardContent>
+      </Card>
     </div>
   );
 }

@@ -25,7 +25,7 @@ export const styles = (theme: Theme) => ({
     alignItems: 'end',
   },
   footer: {
-    background: theme.palette.background.footer,
+    backgroundColor: theme.palette.background.footer,
     padding: '20px 0px',
     // padding: `${theme.spacing(5)}px`,
     display: 'flex',
@@ -33,7 +33,7 @@ export const styles = (theme: Theme) => ({
     justifyContent: 'space-between',
   },
   userOnDashboard: {
-    backgroundColor: theme.palette.background.alternativeFooterHeader,
+    // backgroundColor: theme.palette.background.alternativeFooterHeader,
   },
   nav: {
     display: 'flex',

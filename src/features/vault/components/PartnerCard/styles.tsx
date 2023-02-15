@@ -3,10 +3,11 @@ import { Theme } from '@material-ui/core/styles';
 export const styles = (theme: Theme) => ({
   link: {
     textDecoration: 'none' as const,
+    backgroundColor: theme.palette.background.default,
   },
   container: {
     marginTop: '16px',
-    backgroundColor: theme.palette.background.content,
+    backgroundColor: theme.palette.background.default,
     padding: '16px',
     borderRadius: '12px',
     '&:Hover': {

@@ -1,5 +1,6 @@
 import { useMediaQuery } from '@material-ui/core';
 import { Theme } from '@material-ui/core/styles';
+
 import React, {
   CSSProperties,
   memo,
@@ -13,6 +14,7 @@ import { debounce } from 'lodash';
 import { useInView } from 'react-intersection-observer';
 import { Vault } from '../../../Vault';
 import { VaultEntity } from '../../../../../data/entities/vault';
+
 
 function useVaultHeightEstimate() {
   const smUp = useMediaQuery((theme: Theme) => theme.breakpoints.up('sm'));
